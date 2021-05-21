@@ -14,38 +14,41 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="text-align: center;height: 80px">
-            <div class="container-fluid" style="display: flex;justify-content: space-around">
-                <a class="navbar-brand" href="#">DBR's YAŞAM KOÇLUĞU</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-bottom: 20px;padding-top: 20px" >
+            <div class="container-fluid" >
+                <i class="fas fa-child" style="padding: 5px"></i>
+                <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
+                            <a class="nav-link active" aria-current="page" href="/dbrsyasamkoc/faces/index.xhtml">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Yorumlar</a>
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/yorumlar.xhtml">Yorumlar</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Hizmetlerimiz
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="#">Kişisel Antrenönlerimiz</a></li>
-                                <li><a class="dropdown-item" href="#">Psikologlarımız</a></li>
-
-                                <li><a class="dropdown-item" href="#">Diyetisyenlerimiz</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
+                                <li><hr class="dropdown-divider"></hr></li>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Mobil Uygulamamız</a>
                         </li>
                     </ul>
                     <h:form class="d-flex">
-                        <h:commandButton action="faces/login.xhtml" class="btn btn-outline-success" value="Giriş Yap"></h:commandButton>
-                        <button class="btn btn-outline-success" type="submit">Üye ol</button>
+
+                        <h:commandButton action = "login?faces-redirect=true" class="btn btn-outline-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton class="btn btn-outline-success" type="button" value="Üye Ol" style="margin-left: 5px"></h:commandButton>
                     </h:form>
                 </div>
             </div>
@@ -53,48 +56,47 @@
         <div class="main-start" >
             <div class="giris-footer mask" style="width: 100%;height: 75vh;display: flex;flex-direction: column;justify-content: center;align-items: center !important;">
                 <div style="border:1px solid white;border-radius: 6px">
-                    
-               
-                <h1 style="color: white;text-align: center">Sağlıklı bir hayat</h1>
-                <h2 style="color: white;text-align: center">şimdi tercihiniz olmazsa</h2>
-                <h3 style="color: white;text-align: center">ilerde zorunluluğunuz olur !</h3>
-                <h2 style="color: white;text-align: center">sizde geç kalmayın</h2>
-                <h1 style="color: white;">   ŞİMDİ DBR YAŞAM KOÇLUĞU İLE TANIŞMA VAKTİ    </h1>
+
+
+                    <h1 style="color: white;text-align: center">Sağlıklı bir hayat</h1>
+                    <h2 style="color: white;text-align: center">şimdi tercihiniz olmazsa</h2>
+                    <h3 style="color: white;text-align: center">ilerde zorunluluğunuz olur !</h3>
+                    <h2 style="color: white;text-align: center">sizde geç kalmayın</h2>
+                    <h1 style="color: white;">   ŞİMDİ DBR YAŞAM KOÇLUĞU İLE TANIŞMA VAKTİ    </h1>
                 </div>
             </div>
-            <div class="main-middle" style="padding-top: 30px">
+            <div class="main-middle" style="padding-top: 70px">
                 <h1 style="text-align: center">GELİŞTİRİCİLER HAKKINDA</h1>
                 <div class="anasayfa-ilk row" style="display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding-top: 20px;padding-bottom: 40px;margin:0px">
 
-                    <div class="card col-md-4 col-sm-12" style="width: 18rem;margin-top: 10px">
-                        <img src="https://img.a.transfermarkt.technology/portrait/big/16101-1568299944.JPG?lm=1" class="card-img-top" style="" alt="..."></img>
+                    <div class="card col-md-4 col-sm-12" style="width: 18rem;margin-top: 10px;min-height: 365px">
+                        <img src="https://img.a.transfermarkt.technology/portrait/big/16101-1568299944.JPG?lm=1" class="card-img-top" style="width: 100%" alt="..."></img>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">Nihat Pamukçu</h5>
+                            <p class="card-text">Konyalı , 2000 doğumlu , o zamandan beri Beşiktaşlı</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
 
 
-                    <div class="card col-md-4 col-sm-12" style="width: 18rem;margin-top: 10px">
+                    <div class="card col-md-4 col-sm-12" style="width: 18rem;margin-top: 10px;min-height: 365px">
                         <img src="http://c12.incisozluk.com.tr/res/incisozluk//11509/1/2720531_o1479.jpg" class="card-img-top" alt="..."></img>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">Yılmaz Alperen</h5>
+                            <p class="card-text">Yılmaz abim Galatasaraylı</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
 
 
 
-                    <div class="card col-md-4 col-sm-12" style="width: 18rem;margin-top: 10px">
-                        <img src="https://cdn.claretandhugh.info/wp-content/uploads/atiba.jpg" class="card-img-top" alt="..."></img>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                    <div class="container" style="width: 18rem">
+                        <img src="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg" alt="Avatar" class="image"></img>
+                            <div class="overlay">
+                                <div class="text">Hello World</div>
+                            </div>
                     </div>
+
                 </div>
 
             </div>        
@@ -111,7 +113,7 @@
 
 
 
-            <div class="col-md-6 col-sm-12" style="display: flex;justify-content: center;padding-top: 40px">
+            <div class="col-md-6 col-sm-12 " style="display: flex;justify-content: center;padding-top: 40px">
 
                 <img src="https://i.hizliresim.com/m758djm.png" style="height:60vh;" alt="alt"/>
             </div>

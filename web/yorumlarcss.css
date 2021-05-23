@@ -1,6 +1,7 @@
 body{
+    background-image: url('https://image.freepik.com/free-vector/illustration-with-young-people-talking_52683-29824.jpg');
     background-color: white;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     height: 100%;
     width: 100%

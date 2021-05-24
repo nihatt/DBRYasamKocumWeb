@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.util.Date;
 
 /**
  *
@@ -87,5 +89,10 @@ catch (SQLException ex) {
             Logger.getLogger(projebean1.class.getName()).log(Level.SEVERE, null, ex);
         }  
       return abc;
+    }
+        
+            public String getTime(){
+        
+        return DateFormat.getTimeInstance(DateFormat.MEDIUM).format(new Date());
     }
 }

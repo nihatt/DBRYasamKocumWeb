@@ -7,9 +7,9 @@ package util;
 import java.sql.Connection ; 
 import java.sql.DriverManager ; 
 public class DBConnection {
-    private String dbUrl = "jdbc:derby://localhost:1527/DbDBR"  ;
-    private String dbUser = "APP" ; 
-    private String dbPassword = "APP" ; 
+    private String dbUrl = "jdbc:derby://localhost:1527/DBRdb"  ;
+    private String dbUser = "yil" ; 
+    private String dbPassword = "yil" ; 
     
     public Connection createConnection(){
         Connection conn = null ; 

@@ -30,6 +30,14 @@ body{
 h1{
     font-family: 'Bebas Neue', cursive;
 }
+
+#presentDateTime{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 50px;
+    padding-top: 30px;
+    color: white;
+}
+
 h2,h3{
     font-family: KoHo , cursive
 }

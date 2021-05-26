@@ -21,6 +21,40 @@ import java.util.ArrayList ;
 public class PersonalTrainerBean {
     private ArrayList<PersonalTrainer> personalTrainerDao = null ;  // arraylist.
     private PersonalTrainerDAO personalTrainerDAO = null ;         // personaltrainer DAO object.
+    // baska bir sayfaya gittigi zaman burayı true yapip tüm boolean ifadeler sıfırlanmalı.
+    private static boolean reset = false  ;
+    
+    public PersonalTrainerBean(){
+        if(reset){
+            female = false ; 
+            male = false  ;
+            age25P = false ; 
+            age30P = false ; 
+            age35P = false ; 
+            age40P = false;
+            age45P = false ; 
+            highLicense = false ; 
+            license = false ; 
+            strong = false ; 
+            strength = false ; 
+            sedanter = false ; 
+            fitness = false ; 
+            star5 = false ; 
+            star4 = false ; 
+            star3 = false ; 
+            star2 = false ; 
+            star1 = false ; 
+            reset = false ; 
+        }
+    }
+
+    public static boolean isReset() {
+        return reset;
+    }
+
+    public static void setReset(boolean reset) {
+        PersonalTrainerBean.reset = reset;
+    }
      //  Cinsiyet
     private static boolean female = false ;
     private static boolean male = false ; 

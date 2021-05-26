@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="sporcularcss.css"/>
@@ -170,28 +171,28 @@ and open the template in the editor.
                 </div>
 
                 <div class="col-sm-12 col-md-9">
+                    <ui:repeat value="#{personalTrainerBean.personalTrainerDao}" var="list">
                     <div class="kartlar" style="display: flex;flex-direction: row">
-                        <div class="col" ontouchstart="this.classList.toggle('hover');">
-                            <div class="container">
-                                <div class="front" style="background-image: url('https://i.hizliresim.com/6dv9g46.jpg');background-size: auto 200px;" >
-                                    <div class="inner">
-                                        <p>Yılmaz Alperen</p>
-                                        <span>Profesyonel Porno Yıldızı</span>
+                        
+                            <div class="col" ontouchstart="this.classList.toggle('hover');">
+                                <div class="container">
+                                    <div class="front" style="background-image: url('resources/images#{list.pt_path}');background-size: auto 200px;" >
+                                        <div class="inner">
+                                            <p>#{list.pt_name} #{list.pt_surname}</p>
+                                            <span>#{list.description}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="back" >
-                                    <div class="inner" >
-                                        <p></p>
+                                    <div class="back" >
+                                        <div class="inner" >
+                                            <p>Buraya eklenecek!</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <br/>
                         
-                        
-
-
-
                     </div>
+                    </ui:repeat>
                 </div>    
 
             </div>

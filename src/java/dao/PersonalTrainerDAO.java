@@ -38,7 +38,8 @@ public class PersonalTrainerDAO {
             while(resultSet.next()){
                 personalTrainer.add(new PersonalTrainer(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
                 resultSet.getString(4),resultSet.getString(5),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),
-                resultSet.getInt(9),resultSet.getBoolean(10),resultSet.getInt(11),resultSet.getDouble(12),resultSet.getInt(13)));
+                resultSet.getInt(9),resultSet.getBoolean(10),resultSet.getInt(11),resultSet.getDouble(12),resultSet.getInt(13),
+                        resultSet.getString(14)));
             }
             return personalTrainer ; 
             

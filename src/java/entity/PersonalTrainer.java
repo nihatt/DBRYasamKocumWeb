@@ -23,12 +23,14 @@ public class PersonalTrainer {
     private int pt_count ; 
     private double pt_avg ; 
     private int pt_master ;
+    private String description ; 
     
     public PersonalTrainer(){
         
     }
 
-    public PersonalTrainer(int pt_id, String pt_name, String pt_surname, String pt_link, String pt_number, String pt_cv, String pt_path, String pt_gender, int pt_age, boolean pt_state, int pt_count, double pt_avg, int pt_master) {
+    public PersonalTrainer(int pt_id, String pt_name, String pt_surname, String pt_link, String pt_number, String pt_cv, String pt_path, String pt_gender, int pt_age, boolean pt_state, int pt_count, double pt_avg, int pt_master,
+        String description) {
         this.pt_id = pt_id;
         this.pt_name = pt_name;
         this.pt_surname = pt_surname;
@@ -42,6 +44,16 @@ public class PersonalTrainer {
         this.pt_count = pt_count;
         this.pt_avg = pt_avg;
         this.pt_master = pt_master;
+        this.description = description ; 
+        
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 

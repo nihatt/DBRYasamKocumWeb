@@ -1,16 +1,137 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="psikologcss.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=KoHo"/></link>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bebas+Neue"/>
+        <script src="https://kit.fontawesome.com/018c1f74d5.js" crossorigin="anonymous"></script>
+        <title>Psikologlar</title>
+
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
+            <div class="container-fluid" >
+                <i class="fas fa-child" style="padding: 5px"></i>
+                <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/dbrsyasamkoc/faces/index.xhtml">Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/yorumlar.xhtml">Yorumlar</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hizmetlerimiz
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
+                                <li><hr class="dropdown-divider"></hr></li>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Mobil Uygulamamız</a>
+                        </li>
+                    </ul>
+                    <h:form class="d-flex">
+
+                        <h:commandButton action = "login?faces-redirect=true" rendered="false" class="btn btn-outline-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton class="btn btn-outline-success" rendered="false" type="button" value="Üye Ol" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton class="btn btn-warning" rendered="true" type="button" value="Profil" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
+
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="d-sm-none d-md-block  col-sm-0 col-md-4" id="psikosol">
+            
+        </div>
+        
+        
+        <div class="container-fluid psikologlar-start col-8" style="padding-top: 80px;">
+                    <div class="tile col-sm-12 col-md-4 "> 
+            <img src='https://www.simapsikoloji.com/wp-content/uploads/2019/03/psikolog-nedir-terapi-neye-yarar.jpg'/>
+            <div class="text">
+                <h1>Sibel Kekilli</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+            
+            
+                                <div class="tile col-sm-12 col-md-4"> 
+            <img src='https://www.simapsikoloji.com/wp-content/uploads/2019/03/psikolog-nedir-terapi-neye-yarar.jpg'/>
+            <div class="text">
+                <h1>Sibel Kekilli</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+            
+                                <div class="tile col-sm-12 col-md-4 "> 
+            <img src='https://cdntr1.img.sputniknews.com/img/104113/08/1041130844_0:0:1328:746_1200x675_80_0_0_c5761faf34e4d25b3503245e14410693.jpg'/>
+            <div class="text">
+                <h1>Sibel Kekilli</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+            
+            
+                                <div class="tile col-sm-12 col-md-4 "> 
+            <img src='https://www.simapsikoloji.com/wp-content/uploads/2019/03/psikolog-nedir-terapi-neye-yarar.jpg'/>
+            <div class="text">
+                <h1>Sibel Kekilli</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+
+
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    </h:body>
 </html>
+

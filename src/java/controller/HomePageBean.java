@@ -13,7 +13,7 @@ import java.util.Date;
 @RequestScoped
 public class HomePageBean {
     public String getTime(){
-        
+        PersonalTrainerBean.setReset(true);
         return DateFormat.getTimeInstance(DateFormat.MEDIUM).format(new Date());
     }
 }

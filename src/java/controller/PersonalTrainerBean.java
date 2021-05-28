@@ -23,6 +23,23 @@ public class PersonalTrainerBean {
     private PersonalTrainerDAO personalTrainerDAO = null ;         // personaltrainer DAO object.
     // baska bir sayfaya gittigi zaman burayı true yapip tüm boolean ifadeler sıfırlanmalı.
     private static boolean reset = false  ;
+    // these methods for bootstrap modal.
+    private static PersonalTrainer sPersonalTrainer = null   ;
+    public String getTitleOfPersonalTrainer(){
+        if(sPersonalTrainer==null){
+            return "" ; 
+        }
+        return  sPersonalTrainer.getPt_name()+" "+sPersonalTrainer.getPt_surname() ; 
+    }
+    
+    public String getContentOfPersonalTrainer(){
+        if(sPersonalTrainer == null){
+            return "" ; 
+        }
+        else{
+           return sPersonalTrainer.getPt_cv() ; 
+        }
+    }
     
     public PersonalTrainerBean(){
         if(reset){
@@ -232,7 +249,10 @@ public class PersonalTrainerBean {
         this.star1 = star1;
     }
 
-   
+    public String firstSelectPT(PersonalTrainer personalTrainer){
+       sPersonalTrainer = personalTrainer ; 
+        return null  ;
+    }
 
     public String filtreleme(){
         // to do something.

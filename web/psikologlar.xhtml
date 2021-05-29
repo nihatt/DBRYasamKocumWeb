@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
@@ -60,69 +61,55 @@
         </nav>
 
         <div class="d-sm-none d-md-block  col-sm-0 col-md-4" id="psikosol">
-            
+
         </div>
-        
-        
+
+
         <div class="container-fluid psikologlar-start col-8" style="padding-top: 80px;">
+            <h:form prependId="false" id="ui-repeat-form">
+                <ui:repeat value="#{psychologistBean.psychologistDao}" var="list">
                     <div class="tile col-sm-12 col-md-4 "> 
-            <img src='https://www.simapsikoloji.com/wp-content/uploads/2019/03/psikolog-nedir-terapi-neye-yarar.jpg'/>
-            <div class="text">
-                <h1>Sibel Kekilli</h1>
-                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
-                <div class="dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                        <h:graphicImage library="images" name="#{list.psych_path}"/>
+                        <div class="text">
+                            <h1>#{list.psych_name} #{list.psych_surname}</h1>
+                            <h2 class="animate-text">
+                                #{list.psych_description}
+                                <br/>
+                                <h:commandLink value="Bas buraya" 
+                                               onclick="$('.modal').modal('show')"
+                                               action="#{psychologistBean.firstSelecPsychologist(list)}">
+                                    <f:ajax render="div-id"/>
+                                </h:commandLink>
+                            </h2>
+                            <p class="animate-text"></p>
+                            <div class="dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </ui:repeat>
+            </h:form>
+        </div>
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div jsf:id="div-id" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">#{psychologistBean.getTitlePsychologist()}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
-        </div>
-            
-            
-                                <div class="tile col-sm-12 col-md-4"> 
-            <img src='https://www.simapsikoloji.com/wp-content/uploads/2019/03/psikolog-nedir-terapi-neye-yarar.jpg'/>
-            <div class="text">
-                <h1>Sibel Kekilli</h1>
-                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
-                <div class="dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-            
-                                <div class="tile col-sm-12 col-md-4 "> 
-            <img src='https://cdntr1.img.sputniknews.com/img/104113/08/1041130844_0:0:1328:746_1200x675_80_0_0_c5761faf34e4d25b3503245e14410693.jpg'/>
-            <div class="text">
-                <h1>Sibel Kekilli</h1>
-                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
-                <div class="dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-            
-            
-                                <div class="tile col-sm-12 col-md-4 "> 
-            <img src='https://www.simapsikoloji.com/wp-content/uploads/2019/03/psikolog-nedir-terapi-neye-yarar.jpg'/>
-            <div class="text">
-                <h1>Sibel Kekilli</h1>
-                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
-                <div class="dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-            
         </div>
 
 
@@ -132,6 +119,7 @@
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </h:body>
 </html>
 

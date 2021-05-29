@@ -138,7 +138,7 @@ public class PersonalTrainerDAO {
                 query += "  ) " ; 
             }
             if( star5 || star4 ||star3 || star2 || star1){
-                if(!(age25P || age30P || age35P || age40P || age45P) && !(female || male) && !(highLicense || license) && !(star5 || star4 ||star3 || star2 || star1) ){
+                if(!(age25P || age30P || age35P || age40P || age45P) && !(female || male) && !(highLicense || license) && !(strong || strength || sedanter || fitness) ){
                     
                 }
                 else{

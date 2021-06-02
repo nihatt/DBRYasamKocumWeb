@@ -3,52 +3,132 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      >
-      
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
-        <link rel="stylesheet" href="newcss.css"/>
-        <title>Facelet Title</title>
+        <link rel="stylesheet" href="logincss.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=KoHo"/></link>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bebas+Neue"/>
+        <script src="https://kit.fontawesome.com/018c1f74d5.js" crossorigin="anonymous"></script>
+        <title>DBR YASAM KOCLUGU</title>
+
     </h:head>
-    <h:body class="text-center" >
-       
-    
-<main class="form-signin container">
-  <h:form>
-    <h:graphicImage class="mb-4" value="https://i.pinimg.com/originals/b3/5f/c7/b35fc7144c81956c683df40833b87469.jpg" alt="" width="72" height="57"></h:graphicImage>
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
+            <div class="container-fluid" >
+                <i class="fas fa-child" style="padding: 5px"></i>
+                <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
 
-    <div class="form-floating" style="width: 460px">
-      <h:inputText  class="form-control" id="floatingInput" a:placeholder="name@example.com"></h:inputText>
-      <h:outputLabel for="floatingInput">Mail Adresiniz</h:outputLabel>
-    </div>
-    <div class="form-floating">
-      <h:inputSecret  class="form-control" id="floatingPassword" a:placeholder="Password"></h:inputSecret>
-      <h:outputLabel for="floatingPassword">Şifreniz</h:outputLabel>
-    </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/dbrsyasamkoc/faces/index.xhtml">Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/yorumlar.xhtml">Yorumlar</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hizmetlerimiz
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
 
-    <div class="checkbox mb-3">
-      <h:outputLabel>
-        <h:selectBooleanCheckbox  value="remember-me"> Remember me</h:selectBooleanCheckbox>
-      </h:outputLabel>
-    </div>
-    <h:button class="w-100 btn btn-lg btn-primary" value="Giriş Yap"></h:button>
-    <p class="mt-5 mb-3 text-muted">© 2017–2021 DBR's SAĞLIK</p>
-  </h:form>
-</main>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                        </li>
+                    </ul>
+                    <h:form class="d-flex">
+
+                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-outline-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton class="btn btn-outline-success" rendered="false" type="button" value="Üye Ol" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="true"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
+
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="login-wrap" style="display:flex;justify-content: center;align-items: center;padding-top: 150px;">
+            <div class="login-html mx-auto my-auto" >
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked="true"/><label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"/><label for="tab-2" class="tab">Sign Up</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">E-mail</label>
+                            <input id="user" type="text" class="input"/>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Şifre</label>
+                            <input id="pass" type="password" class="input" data-type="password"/>
+                        </div>
+                        <div class="group">
+
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Giriş Yap"/>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="#forgot">Şifreni mi Unuttun?</a>
+                        </div>
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="user" class="label">E-mail</label>
+                            <input id="user" type="text" class="input"/>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Şifre</label>
+                            <input id="pass" type="password" class="input" data-type="password"/>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">İsim</label>
+                            <input id="pass" type="password" class="input" data-type="password"/>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Soyisim</label>
+                            <input id="pass" type="text" class="input"/>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Soyisim</label>
+                            <input id="pass" type="text" class="input"/>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign Up"/>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a> <label for="tab-1">Zaten Üye misin?</label></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-    
-  
-
-
-        
-               <ui:repeat var="xyz" value="#{projebean1.fonk()}" varStatus="loop">
-            #{projebean1.fonk()[loop.index]}
-        </ui:repeat>
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     </h:body>
 </html>
-

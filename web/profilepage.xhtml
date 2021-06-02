@@ -37,7 +37,6 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
-                                <li><hr class="dropdown-divider"></hr></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
@@ -49,7 +48,7 @@
 
                         <h:commandButton action = "login?faces-redirect=true" rendered="false" class="btn btn-outline-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton class="btn btn-outline-success" rendered="false" type="button" value="Üye Ol" style="margin-left: 5px"></h:commandButton>
-                        <h:commandButton class="btn btn-warning" rendered="true" type="button" value="Profil" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="true"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
 
                     </h:form>
@@ -91,11 +90,11 @@
 
                             <!-- User description -->
                             <p class="user-profile__desc">
-                                Talented designer and passionate narrator.
+                                DBR's Sağlık Üyesi
                             </p>
                             <!-- User URL -->
                             <div class="user-profile__url">
-                                <a href="https://bootdey.com/">https://bootdey.com/</a>
+                             
                             </div>
                             <!-- User social links -->
                             <div class="social" >
@@ -119,12 +118,6 @@
                                 <li>
                                     <i class="fa fa-calendar-o"></i> Member for 180 days
                                 </li>
-                                <li>
-                                    <i class="fa fa-clock-o"></i> Last seen 2 hours ago
-                                </li>
-                                <li>
-                                    <i class="fa fa-eye"></i> 50 profile views
-                                </li>
                             </ul>
                         </div>
 
@@ -137,17 +130,17 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent" >
                             <div class="tab-pane fade show  active row" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-                                <div style="display: flex;flex-direction: row;">
-                                    <div class="card" style="width: 18rem;">
+                                <div style="display: flex;flex-direction: row;padding: 10px;">
+                                    <div class="card" style="width: 18rem;margin-right: 20px">
                                         <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
                                         <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h5 class="card-title">Eğitmen adı</h5>
+                                            <p class="card-text">eğitmen hakkında genel bilgi</p>
 
                                         </div>
                                     </div>
 
-                                    <div class="card" style="width: 18rem;">
+                                    <div class="card" style="width: 18rem;margin-right: 20px">
                                         <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
                                         <div class="card-body">
                                             <h5 class="card-title">Card title</h5>

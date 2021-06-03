@@ -17,8 +17,8 @@
 
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
-            <div class="container-fluid mx-auto" >
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
+            <div class="container-fluid" >
                 <i class="fas fa-child" style="padding: 5px"></i>
                 <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
 
@@ -40,7 +40,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
-                                <li><hr class="dropdown-divider"></hr></li>
+                                
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
@@ -50,10 +50,10 @@
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "login?faces-redirect=true" rendered="false" class="btn btn-outline-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
-                        <h:commandButton class="btn btn-outline-success" rendered="false" type="button" value="Üye Ol" style="margin-left: 5px"></h:commandButton>
-                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="true"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
-                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "login?faces-redirect=true" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
+                                         action="#{userBean.cikisYap()}"></h:commandButton>
 
                     </h:form>
                 </div>

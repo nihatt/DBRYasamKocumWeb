@@ -59,11 +59,11 @@
             </div>
         </nav>
 
-        <div class="container kucult">
-            <div class="row">
-                <h:form prependId="false" id="nut-form">
+        <div class="container kucult" >
+            <div class="row" >
+                <h:form prependId="false" id="nut-form" style="display: flex;flex-direction: row">
                     <ui:repeat value="#{nutritionistBean.nutritionistDao}" var="list">
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="padding-right: 30px">
                             <div class="our-team">
                                 <div class="picture">
                                     <h:graphicImage library="images" name="#{list.nut_path}" />
@@ -74,9 +74,9 @@
                                 </div>
                                 <ul class="social">
 
-                                    <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-instagram fa-2x" aria-hidden="true"></a></li>
+                                    <li><a href="#{list.nut_link}" target="_blank" class="fa fa-instagram fa-2x" aria-hidden="true"></a></li>
                                     <li>
-                                        <h:commandLink value="Bas buraya" 
+                                        <h:commandLink value="Daha Fazla Bilgi" 
                                                        onclick="$('.modal').modal('show')"
                                                        action="#{nutritionistBean.firstSelectNutritionist(list)}">
                                             <f:ajax render="div-id"/>

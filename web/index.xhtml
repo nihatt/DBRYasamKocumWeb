@@ -78,7 +78,7 @@
                     <h1 style="color: white;">   ŞİMDİ DBR YAŞAM KOÇLUĞU İLE TANIŞMA VAKTİ    </h1>
 
                 </div>
-                <h:outputText class="saat"  id="presentDateTime" style="font-family: 'Bebas Neue', cursive;" value="Güncel Saat : #{homePageBean.getTime()}"/>
+                <h:outputText class="saat"  id="presentDateTime" style="font-family: 'Bebas Neue', cursive;" value="#{homePageBean.getTime()}"/>
 
                 <h:form id="hiddenForm" style="display:none">
                     <h:commandButton id="updatePresentDateTime">

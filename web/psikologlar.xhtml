@@ -73,7 +73,8 @@
                             <h2 class="animate-text">
                                 #{list.psych_description}
                                 <br/>
-                                <h:commandLink value="Bas buraya" 
+                                <h:commandLink value="Detaylı Bilgi" 
+                                               style="color:black;"
                                                onclick="$('.modal').modal('show')"
                                                action="#{psychologistBean.firstSelecPsychologist(list)}">
                                     <f:ajax render="div-id"/>
@@ -99,7 +100,7 @@
                     </div>
                     <div class="modal-body">
                         <p>
-
+                            
                         </p>
                     </div>
                     <div class="modal-footer">

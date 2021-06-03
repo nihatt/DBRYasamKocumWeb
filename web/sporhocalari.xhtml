@@ -265,13 +265,13 @@ and open the template in the editor.
                                             <div class="inner" >
                                                 <p>
                                                     <div>
-                                                        <h2>Ege CINEL</h2>
-                                                        <h3>Yaş :  27</h3>  
+                                                        <h2>#{list.pt_name} #{list.pt_surname}</h2>
+                                                        <h3>#{list.pt_age} </h3>  
                                                     </div>
 
                                                     <div>
-                                                        <h:outputLink value="wa.link/6e6uxa" target="_blank"> <i class="fab fa-whatsapp fa-2x" style="color:rgb(64, 195, 80);"></i></h:outputLink>
-                                                        <div class="instagram"><h:outputLink value="insta linkleri buraya gelcek aşko" target="_blank"> <i class="fab fa-instagram fa-2x" style=""></i></h:outputLink></div>
+                                                        <h:outputLink value="https://wa.link/6e6uxa" target="_blank"> <i class="fab fa-whatsapp fa-2x" style="color:rgb(64, 195, 80);"></i></h:outputLink>
+                                                        <div class="instagram"><h:outputLink value="#{list.pt_link}" target="_blank"> <i class="fab fa-instagram fa-2x" style=""></i></h:outputLink></div>
                                                          
                                                     </div><!-- comment -->
 

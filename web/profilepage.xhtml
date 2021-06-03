@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
@@ -46,10 +47,10 @@
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "login?faces-redirect=true" rendered="false" class="btn btn-outline-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
-                        <h:commandButton class="btn btn-outline-success" rendered="false" type="button" value="Üye Ol" style="margin-left: 5px"></h:commandButton>
-                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="true"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
-                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "login?faces-redirect=true" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
+                                          action="#{userBean.cikisYap()}"></h:commandButton>
 
                     </h:form>
                 </div>
@@ -57,141 +58,145 @@
         </nav>
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
-        <div class="container" style="padding-top: 80px">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="user-profile__avatar shadow-effect text-center">
-                        <img class="img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."></img>
-                        John Doe
-                        <p class="text-muted">Project Manager</p>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-
-                        </div>
-                        <div class="panel-body">
-                            <h:form class="d-flex" style="justify-content: space-between"> 
-                                <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-success"   value="Profili Düzenle"  style="margin-left: 5px"></h:commandButton>
-                                <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
-                            </h:form>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-sm-9">
+        <h:form prependId="false" id="profil-form">
+                <ui:repeat value="#{userBean.profileUser}" var="list">
+                <div class="container" style="padding-top: 80px">
                     <div class="row">
-                        <div class="col-sm-6">
-
-                            <!-- User name -->
-                            <h3 class="user-profile__title">John Doe</h3>
-
-                            <!-- User description -->
-                            <p class="user-profile__desc">
-                                DBR's Sağlık Üyesi
-                            </p>
-                            <!-- User URL -->
-                            <div class="user-profile__url">
-
+                        <div class="col-sm-3">
+                            <div class="user-profile__avatar shadow-effect text-center">
+                                <h:graphicImage library="images" name="USERS/#{list.user_path}" />
+                                #{list.user_name} #{list.user_surname}
+                                <p class="text-muted">Üye</p>
                             </div>
-                            <!-- User social links -->
-                            <div class="social" >
-                                <ul class="list-inline" style="display: flex;flex-direction: row;">
 
-                                </ul>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                </div>
+                                <div class="panel-body">
+                                    <h:form class="d-flex" style="justify-content: space-between"> 
+                                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-success"   value="Profili Düzenle"  style="margin-left: 5px"></h:commandButton>
+                                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
+                                    </h:form>
+                                </div>
                             </div>
+
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-6">
 
-                            <!-- Profile info -->
-                            <ul class="user-profile__info">
-                                <li>
-                                    <i class="fa fa-calendar-o"></i> 180 gündür bizimle sağlıklı yaşıyorsunuz !
-                                </li>
-                            </ul>
-                        </div>
+                                    <!-- User name -->
+                                    <h3 class="user-profile__title">#{list.user_name} #{list.user_surname}</h3>
 
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Eğitmenlerim</button>
-                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Yorumlarım</button>
+                                    <!-- User description -->
+                                    <p class="user-profile__desc">
+                                        DBR's Sağlık Üyesi
+                                    </p>
+                                    <!-- User URL -->
+                                    <div class="user-profile__url">
 
-                            </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent" >
-                            <div class="tab-pane fade show  active row" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-                                <div style="display: flex;flex-direction: row;padding: 10px;">
-                                    <div class="card" style="width: 18rem;margin-right: 20px">
-                                        <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Eğitmen adı</h5>
-                                            <p class="card-text">eğitmen hakkında genel bilgi</p>
+                                    </div>
+                                    <!-- User social links -->
+                                    <div class="social" >
+                                        <ul class="list-inline" style="display: flex;flex-direction: row;">
 
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+
+                                    <!-- Profile info -->
+                                    <ul class="user-profile__info">
+                                        <li>
+                                            <i class="fa fa-calendar-o"></i>  #{list.user_date}
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Eğitmenlerim</button>
+                                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Yorumlarım</button>
+
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent" >
+                                    <div class="tab-pane fade show  active row" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
+                                        <div style="display: flex;flex-direction: row;padding: 10px;">
+                                            <div class="card" style="width: 18rem;margin-right: 20px">
+                                                <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Eğitmen adı</h5>
+                                                    <p class="card-text">eğitmen hakkında genel bilgi</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="card" style="width: 18rem;margin-right: 20px">
+                                                <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                                                </div>
+                                            </div>
                                         </div>
+
+
                                     </div>
 
-                                    <div class="card" style="width: 18rem;margin-right: 20px">
-                                        <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <article class="comment" >
+                                                <a class="comment-img" href="#non">
+                                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="50" height="50"></img>
+                                                </a>
+                                                <div class="comment-body">
+                                                    <div class="text">
+                                                        <p>This is a much longer one that will go on for a few lines.</p>
+                                                        <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
+                                                    </div>
+                                                    <h:form>
+                                                        <div style="display: flex;justify-content: flex-end">
+                                                            <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-warning"   value="Düzenle"  style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
+                                                        </div>
+                                                    </h:form>
+                                                </div>
+                                            </article>
+
+                                            <article class="comment" >
+                                                <a class="comment-img" href="#non">
+                                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="50" height="50"></img>
+                                                </a>
+                                                <div class="comment-body">
+                                                    <div class="text">
+                                                        <p>This is a much longer one that will go on for a few lines.</p>
+                                                        <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
+                                                    </div>
+                                                    <h:form>
+                                                        <div style="display: flex;justify-content: flex-end">
+                                                            <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-warning"   value="Düzenle"  style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
+                                                        </div>
+                                                    </h:form>
+                                                </div>
+                                            </article>
 
                                         </div>
+
+
                                     </div>
                                 </div>
 
-
                             </div>
 
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <div class="card-body">
-                                    <article class="comment" >
-                                        <a class="comment-img" href="#non">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="50" height="50"></img>
-                                        </a>
-                                        <div class="comment-body">
-                                            <div class="text">
-                                                <p>This is a much longer one that will go on for a few lines.</p>
-                                                <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
-                                            </div>
-                                            <h:form>
-                                                <div style="display: flex;justify-content: flex-end">
-                                                    <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-warning"   value="Düzenle"  style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
-                                                </div>
-                                            </h:form>
-                                        </div>
-                                    </article>
-
-                                    <article class="comment" >
-                                        <a class="comment-img" href="#non">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="50" height="50"></img>
-                                        </a>
-                                        <div class="comment-body">
-                                            <div class="text">
-                                                <p>This is a much longer one that will go on for a few lines.</p>
-                                                <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
-                                            </div>
-                                            <h:form>
-                                                <div style="display: flex;justify-content: flex-end">
-                                                    <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-warning"   value="Düzenle"  style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
-                                                </div>
-                                            </h:form>
-                                        </div>
-                                    </article>
-
-                                </div>
 
 
-                            </div>
-                        </div>
-
+                        </div> <!-- / .row -->
                     </div>
-
-
-
                 </div> <!-- / .row -->
-            </div>
-        </div> <!-- / .row -->
+            </ui:repeat>
+        </h:form>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>

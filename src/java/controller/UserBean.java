@@ -26,7 +26,21 @@ public class UserBean {
     private String user_main_in ;
     private String user_password ; 
     private String user_password_in ; 
+    private ArrayList<User> profileUser ; 
 
+    public ArrayList<User> getProfileUser() {
+        UserDAO userDAO = new UserDAO();
+        User tempUser = userDAO.getUserById(user_id);
+        profileUser = new ArrayList<>();
+        profileUser.add(tempUser);
+        return profileUser;
+    }
+
+    public void setProfileUser(ArrayList<User> profileUser) {
+        this.profileUser = profileUser;
+    }
+
+ 
     public String getUser_main_in() {
         return user_main_in;
     }
@@ -76,7 +90,7 @@ public class UserBean {
             return null ; 
         }
         else{
-            user_id = tempUser.getNut_id();
+            user_id = tempUser.getUser_id();
             user_name = tempUser.getUser_name();
             user_surname = tempUser.getUser_surname();
             user_mail = tempUser.getUser_mail();

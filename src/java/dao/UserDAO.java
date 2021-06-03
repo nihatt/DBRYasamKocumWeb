@@ -112,6 +112,26 @@ public class UserDAO {
         return 0 ;
     }
     
+    public User getUserById(int user_id){
+        String query = "select * from USERS WHERE USER_ID =  " + user_id + " " ;
+        try{
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            User tempUser = null ; 
+            while(resultSet.next()){
+                tempUser = new User(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6),resultSet.getString(7),
+                resultSet.getInt(8),resultSet.getInt(9),resultSet.getInt(10));
+            }
+            return tempUser ; 
+            
+        }catch(Exception e1){
+            System.out.println(e1.getMessage());
+        }
+        return null ; 
+    }
+    
     public User girisYap(String user_mail,String user_password){
         String query = " Select * from USERS WHERE USER_MAIL = ? AND USER_PASSWORD = ? " ; 
         try{

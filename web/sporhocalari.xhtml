@@ -234,12 +234,12 @@ and open the template in the editor.
                             <i class="far fa-futbol"></i><!-- comment -->
                             <i class="far fa-futbol"></i><!-- comment -->
                             <i class="far fa-futbol"></i>
-                                                        <i class="far fa-futbol"></i>
+                            <i class="far fa-futbol"></i>
                             <i class="far fa-futbol"></i>
                             <i class="far fa-futbol"></i><!-- comment -->
                             <i class="far fa-futbol"></i><!-- comment -->
                             <i class="far fa-futbol"></i>
-                                                        <i class="far fa-futbol"></i>
+                            <i class="far fa-futbol"></i>
 
 
                         </div>
@@ -263,15 +263,28 @@ and open the template in the editor.
                                         <div class="back" >
                                             <div class="inner" >
                                                 <p>
-                                                    <p>İsim : Ege CINEL</p>
-                                                    <p>Yas :  27</p>
-                                                    <p>Whattsap iconu yanina telofunu</p>
-                                                    <p>Instagram iconu basinca ig hesabina gidilecek!</p>
-                                                    <h:commandLink value="Bas buraya" 
-                                                                   onclick="$('.modal').modal('show')"
-                                                                   action="#{personalTrainerBean.firstSelectPT(list)}">
-                                                        <f:ajax render="div-id"/>
-                                                    </h:commandLink>
+                                                    <div>
+                                                        <h2>Ege CINEL</h2>
+                                                        <h3>Yaş :  27</h3>  
+                                                    </div>
+
+                                                    <div>
+                                                        <h:outputLink value="wa.link/6e6uxa" target="_blank"> <i class="fab fa-whatsapp fa-2x" style="color:rgb(64, 195, 80);"></i></h:outputLink>
+                                                        <div class="instagram"><h:outputLink value="insta linkleri buraya gelcek aşko" target="_blank"> <i class="fab fa-instagram fa-2x" style=""></i></h:outputLink></div>
+                                                         
+                                                    </div><!-- comment -->
+
+                                                    <div>
+                                                        <h:commandLink value="Daha Fazla Bilgi" 
+                                                                       style="color: black;"
+                                                                       onclick="$('.modal').modal('show')"
+                                                                       action="#{personalTrainerBean.firstSelectPT(list)}">
+                                                            <f:ajax render="div-id"/>
+                                                        </h:commandLink>
+                                                    </div>
+
+
+
                                                 </p>
                                             </div>
                                         </div>

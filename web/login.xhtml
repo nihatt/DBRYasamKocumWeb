@@ -16,7 +16,7 @@
 
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
+        <nav class="navbar navbar-expand-lg navbar-transparent  fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
             <div class="container-fluid" >
                 <i class="fas fa-child" style="padding: 5px"></i>
                 <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
@@ -27,13 +27,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/dbrsyasamkoc/faces/index.xhtml">Anasayfa</a>
+                            <a class="nav-link active" aria-current="page" href="/dbrsyasamkoc/faces/index.xhtml" style="color: yellow;">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/dbrsyasamkoc/faces/yorumlar.xhtml">Yorumlar</a>
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/yorumlar.xhtml" style="color: yellow;">Yorumlar</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: yellow;">
                                 Hizmetlerimiz
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,12 +44,12 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" style="color: yellow;">Kendini Gör !</a>
                         </li>
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-outline-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-success"   value="Giriş Yap"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton class="btn btn-outline-success" rendered="false" type="button" value="Üye Ol" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="true"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"></h:commandButton>
@@ -59,10 +59,13 @@
             </div>
         </nav>
 
-        <div class="login-wrap" style="display:flex;justify-content: center;align-items: center;height: 80vh;margin-top: 80px;">
+        <div class="login-wrap" style="display:flex;justify-content: center;align-items: center;height: 80vh;margin-top: 80px;border-radius: 30px">
             <div class="login-html mx-auto my-auto" style="" >
-                <input id="tab-1" type="radio" name="tab" class="sign-in" checked="true"/><label for="tab-1" class="tab">Sign In</label>
-                <input id="tab-2" type="radio" name="tab" class="sign-up"/><label for="tab-2" class="tab">Sign Up</label>
+                <div style="display: flex;justify-content: space-between">
+                    
+                </div>
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked="true"/><label for="tab-1" class="tab">GİRİŞ Yap</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"/><label for="tab-2" class="tab">Üye Ol</label>
                 <div class="login-form">
                     <div class="sign-in-htm">
                         <div class="group">

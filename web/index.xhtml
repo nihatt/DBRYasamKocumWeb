@@ -43,7 +43,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
-                                
+
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
@@ -56,7 +56,7 @@
                         <h:commandButton action = "login?faces-redirect=true" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
-                                         action="#{userBean.cikisYap()}"></h:commandButton>
+                                          action="#{userBean.cikisYap()}"></h:commandButton>
 
                     </h:form>
                 </div>
@@ -91,50 +91,59 @@
                 <div class="anasayfa-ilk row" style="display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding-top: 35px;padding-bottom: 40px;margin:0px">
 
                     <div class="container" style="width: 30rem;height: 30rem;">
-                        <img src="https://i.hizliresim.com/rx6tzod.jpg" alt="Avatar" class="image" style="height: 30rem;"></img>
-                        <div class="overlay" >
-                            <div class="text" style="display: flex;flex-direction:column !important;">
-                                <h3 style="color:black;text-align: center;">Nihat PAMUKÇU</h3>
-                                <h4 style="color:black">Mobile Developer</h4>
-                                <div class="ikonlar" style="display: flex;flex-direction: row;justify-content: space-between">
-                                    <h:outputLink value="https://github.com/nihatt" target="_blank"> <i class="fab fa-github fa-2x" style="color:black;"></i></h:outputLink>
-                                    <h:outputLink value="https://www.instagram.com/yarenniyop74/" target="_blank"> <i class="fab fa-instagram fa-2x" style="color:black"></i></h:outputLink>
+                         <div class="card">
+                            <div class="image">
+                                <img src="https://i.hizliresim.com/rx6tzod.jpg"/>
+                            </div>
+                            <div class="details">
+                                <div class="center">
+                                    <h1>Nihat Pamukçu<br></br><span>Frontend Developer</span></h1>
+                                    <p>Web ve mobil projelerinde frontend developer olarak çalışıyorum</p>
+                                    <ul>
+                                        <li> <h:outputLink value="https://github.com/nihatt" target="_blank"> <i class="fab fa-github " style="color:black;"></i></h:outputLink></li>   
+                                        <li> <h:outputLink value="https://www.instagram.com/yarenniyop74/" target="_blank"> <i class="fab fa-instagram " style="color:black"></i></h:outputLink></li> 
+                                    </ul>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
 
                     <div class="container" style="width: 30rem;height: 30rem;">
-                        <img src="https://i.hizliresim.com/6dv9g46.jpg" alt="Avatar" class="image" style="height: 30rem;"></img>
-                        <div class="overlay" >
-                            <div class="text" style="display: flex;flex-direction:column !important;">
-                                <h3 style="color:black">Yılmaz ALPEREN</h3>
-                                <h4 style="text-align: center;color:black">Data Scientist</h4>
-                                <div class="ikonlar" style="display: flex;flex-direction: row;justify-content: space-between">
-                                    <h:outputLink value="https://github.com/yilmzalpren" target="_blank"> <i class="fab fa-github fa-2x" style="color:black;"></i></h:outputLink>
-                                    <h:outputLink value="https://www.instagram.com/yilmzalpren/" target="_blank"> <i class="fab fa-instagram fa-2x" style="color:black"></i></h:outputLink>
+                         <div class="card">
+                            <div class="image">
+                                <img src="https://i.hizliresim.com/6dv9g46.jpg"/>
+                            </div>
+                            <div class="details">
+                                <div class="center">
+                                    <h1>Yılmaz Alperen<br></br><span>Full Stack Developer</span></h1>
+                                    <p>Bir klavye verin ve yapabileceklerimi izleyin</p>
+                                    <ul>
+                                        <li> <h:outputLink value="https://github.com/yilmzalpren" target="_blank"> <i class="fab fa-github " style="color:black;"></i></h:outputLink></li>   
+                                        <li> <h:outputLink value="https://www.instagram.com/yilmzalpren/" target="_blank"> <i class="fab fa-instagram " style="color:black"></i></h:outputLink></li>  
+                                    </ul>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
 
 
                     <div class="container" style="width: 30rem;height: 30rem;">
-                        <img src="https://i.hizliresim.com/1nhld0d.jpg" alt="Avatar" class="image" style="height: 30rem;"></img>
-                        <div class="overlay" >
-                            <div class="text" style="display: flex;flex-direction:column !important;">
-                                <h3 style="color:black">Mert YILMAZ</h3>
-                                <h4 style="color:black">Web Developer</h4>
-                                <div class="ikonlar" style="display: flex;flex-direction: row;justify-content: space-between">
-                                    <h:outputLink value="https://github.com/mythie-git" target="_blank"> <i class="fab fa-github fa-2x" style="color:black;"></i></h:outputLink>
-                                    <h:outputLink value="https://www.instagram.com/mrtylmaz5/" target="_blank"> <i class="fab fa-instagram fa-2x" style="color:black"></i></h:outputLink>
+                        <div class="card">
+                            <div class="image">
+                                <img src="https://i.hizliresim.com/1nhld0d.jpg" style="height:  420px;"/>
+                            </div>
+                            <div class="details">
+                                <div class="center">
+                                    <h1>Mert Yılmaz<br></br><span>Backend Developer</span></h1>
+                                    <p>Mobil ve Web projelerinde backend developer olarak çalışıyorum</p>
+                                    <ul>
+                                        <li> <h:outputLink value="https://github.com/mythie-git" target="_blank"> <i class="fab fa-github " style="color:black;"></i></h:outputLink></li>   
+                                        <li> <h:outputLink value="https://www.instagram.com/mrtylmaz5/" target="_blank"> <i class="fab fa-instagram " style="color:black"></i></h:outputLink></li>  
+                                    </ul>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 

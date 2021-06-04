@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="deneme.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=KoHo"/></link>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bebas+Neue"/>
+        <script src="https://kit.fontawesome.com/018c1f74d5.js" crossorigin="anonymous"></script>
+        <title>DBR YASAM KOCLUGU</title>
+        <script>
+
+        </script> <!-- script for DateTime. -->
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
+            <div class="container-fluid" >
+                <i class="fas fa-child" style="padding: 5px"></i>
+                <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/dbrsyasamkoc/faces/index.xhtml">Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/yorumlar.xhtml">Yorumlar</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hizmetlerimiz
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
+
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                        </li>
+                    </ul>
+                    <h:form class="d-flex">
+
+                        <h:commandButton action = "login?faces-redirect=true" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
+                                          action="#{userBean.cikisYap()}"></h:commandButton>
+
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container1">
+            <div class="forms-container">
+                <div class="signin-signup">
+                    <form method="POST" action="" class="sign-in-form">
+                        <h2 class="title">Giriş Yap</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Email" autofocus="true" />
+                        </div>
+                        <div class="input-field input-passwd">
+                            <i class="fas lock fa-lock"></i>
+                            <input type="password" placeholder="Şifre"/>
+                            <i class="material-icons visibility">visibility_off</i>
+                        </div>
+                        <span>Hata Mesajı</span>
+                        <input type="submit" value="Giriş" class="btn solid" />
+                    </form>
+                    <form method="POST" action="" class="sign-up-form">
+                        <h2 class="title">Üye Ol</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="İsim" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Soyisim" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Şifre" />
+                        </div>
+                        <input type="submit" class="btn" value="Üye Ol" />
+                    </form>
+                </div>
+            </div>
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>Üye Değil misin ?</h3>
+                        <p>
+                            &emsp;Bütün özelliklerimize erişmek için hemen üye ol
+                        </p>
+                        <br />
+                        <br />
+                        <button class="btn transparent" id="sign-up-btn">
+                            Üye Ol
+                        </button>
+                    </div>
+                </div>
+                <div class="panel right-panel">
+                    <div class="content">
+                        <h3>Zaten Üye misin?</h3>
+                        <p>
+                            &emsp;Üyeliğinin sağladığı bütün avantajlardan faydalanmak için giriş yap!
+                        </p>
+                        <br />
+                        <br />
+                        <button class="btn transparent" id="sign-in-btn">
+                            Giriş Yap
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script>
+            const visibilityToggle = document.querySelector(".visibility");
+            const input = document.querySelector(".input-passwd input");
+            var password = true;
+
+            const sign_in_btn = document.querySelector("#sign-in-btn");
+            const sign_up_btn = document.querySelector("#sign-up-btn");
+            const container = document.querySelector(".container1");
+
+            sign_up_btn.addEventListener("click", () => {
+                container.classList.add("sign-up-mode");
+            });
+
+            sign_in_btn.addEventListener("click", () => {
+                container.classList.remove("sign-up-mode");
+            });
+
+            visibilityToggle.addEventListener("click", function () {
+                if (password) {
+                    input.setAttribute("type", "text");
+                    visibilityToggle.innerHTML = "visibility";
+                } else {
+                    input.setAttribute("type", "password");
+                    visibilityToggle.innerHTML = "visibility_off";
+                }
+                password = !password;
+            });
+
+        </script>
+    </h:body>
+</html>

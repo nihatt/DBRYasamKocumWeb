@@ -68,6 +68,49 @@ public class UserDAO {
     
     //--------------------------------------------
     
+    public void selectHoca(int user_id , int hoca_id, String hoca_type){
+        try{
+            String query = "update USERS SET "  ;
+            String query2 ="insert into CHOOSE VALUES ( DEFAULT, ? , ? , ? )  " ; 
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            preparedStatement = connection.prepareStatement(query2) ;
+            preparedStatement.setInt(1, user_id);
+            preparedStatement.setInt(2, hoca_id);
+         
+            if(hoca_type.equals("s")){
+               query +="PT_ID =  "+String.valueOf(hoca_id)+" where USER_ID  =  " + String.valueOf(user_id) ; 
+               statement.executeUpdate(query);
+               preparedStatement.setString(2, "s");
+               preparedStatement.setInt(3, hoca_id);
+               
+            }
+            else if(hoca_type.equals("d")){
+                query +="NUT_ID =  "+String.valueOf(hoca_id)+" where USER_ID  =  " + String.valueOf(user_id) ; 
+                statement.executeUpdate(query);
+                preparedStatement.setString(2, "d");
+                preparedStatement.setInt(3, hoca_id);
+                
+            }
+            else{  // psikolog.
+                query +="PSYCHS_ID =  "+String.valueOf(hoca_id)+" where USER_ID  =  " + String.valueOf(user_id) ; 
+                statement.executeUpdate(query);
+                preparedStatement.setString(2, "p");
+                preparedStatement.setInt(3, hoca_id);
+                
+            }
+            preparedStatement.executeUpdate();
+            
+            
+        }catch(Exception e1){
+            
+        }
+    }
+    
+    
+    
+    
     // for create User
     public void createUser(String user_name,String user_surname,String user_mail,String user_password,Part doc , String user_date){
         try{

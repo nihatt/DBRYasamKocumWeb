@@ -17,15 +17,20 @@ public class PsychologistBean {
     private ArrayList<Psychologist> psychologistDao  = null ; 
     private PsychologistDAO psychologistDAO = null  ;
     //----------------------------------------------
-    private Psychologist sPsychologist = null ; 
 
-    public Psychologist getsPsychologist() {
+    private static Psychologist sPsychologist = null ; 
+
+    public static Psychologist getsPsychologist() {
         return sPsychologist;
     }
 
-    public void setsPsychologist(Psychologist sPsychologist) {
-        this.sPsychologist = sPsychologist;
+    public static void setsPsychologist(Psychologist sPsychologist) {
+        PsychologistBean.sPsychologist = sPsychologist;
     }
+    public static int getStaticPsikologId(){
+        return sPsychologist.getPsych_id();
+    }
+
     
     public String firstSelecPsychologist(Psychologist psychologist){
        sPsychologist = psychologist ; 
@@ -58,6 +63,15 @@ public class PsychologistBean {
 
     public void setPsychologistDAO(PsychologistDAO psychologistDAO) {
         this.psychologistDAO = psychologistDAO;
+    }
+    
+    public String getCvOfPsych(){
+        if(sPsychologist == null){
+           return null ;  
+        }
+        else{
+            return sPsychologist.getPsych_cv();
+        }
     }
     
 }

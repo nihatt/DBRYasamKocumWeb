@@ -17,7 +17,7 @@
 
     </h:head>
     <h:body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
             <div class="container-fluid" >
                 <i class="fas fa-child" style="padding: 5px"></i>
                 <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
@@ -40,7 +40,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
-                                
+
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
@@ -53,7 +53,7 @@
                         <h:commandButton action = "login?faces-redirect=true" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
-                                         action="#{userBean.cikisYap()}"></h:commandButton>
+                                          action="#{userBean.cikisYap()}"></h:commandButton>
 
                     </h:form>
                 </div>
@@ -74,11 +74,15 @@
                                 #{list.psych_description}
                                 <br/>
                                 <h:commandLink value="Detaylı Bilgi" 
+                                               rendered="#{userBean.loggedIn}"
                                                style="color:black;"
                                                onclick="$('.modal').modal('show')"
                                                action="#{psychologistBean.firstSelecPsychologist(list)}">
                                     <f:ajax render="div-id"/>
                                 </h:commandLink>
+                                <h:commandLink value="Üye ol|Giris Yap"  
+                                               action="login"
+                                               rendered="#{!(userBean.loggedIn)}"/>   
                             </h2>
                             <p class="animate-text"></p>
                             <div class="dots">
@@ -91,25 +95,28 @@
                 </ui:repeat>
             </h:form>
         </div>
-        <div class="modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div jsf:id="div-id" class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">#{psychologistBean.getTitlePsychologist()}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+        <h:form prependId="false" id="select-button-form">
+            <div class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div jsf:id="div-id" class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">#{psychologistBean.getTitlePsychologist()}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                #{psychologistBean.getCvOfPsych()}
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                            <h:commandButton class="btn btn-primary" value="Psikolog Sec"
+                                             action="#{userBean.selectPsych()}"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </h:form>
 
 
 

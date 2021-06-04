@@ -20,7 +20,7 @@ public class NutritionistBean {
 
 
     //------------------------------------------
-    private Nutritionist sNutritionist ; 
+    private static Nutritionist sNutritionist ; 
     
     public String firstSelectNutritionist(Nutritionist nutritionist){
         sNutritionist = nutritionist ; 
@@ -44,14 +44,16 @@ public class NutritionistBean {
             return sNutritionist.getNut_cv();
         }
     }
-    
-    public Nutritionist getsNutritionist() {
+
+    public static Nutritionist getsNutritionist() {
         return sNutritionist;
     }
 
-    public void setsNutritionist(Nutritionist sNutritionist) {
-        this.sNutritionist = sNutritionist;
+    public static void setsNutritionist(Nutritionist sNutritionist) {
+        NutritionistBean.sNutritionist = sNutritionist;
     }
+    
+
     
     //--------------------------------------------------
 
@@ -71,6 +73,10 @@ public class NutritionistBean {
 
     public void setNutritionistDAO(NutritionistDAO nutritionistDAO) {
         this.nutritionistDAO = nutritionistDAO;
+    }
+    
+    public static int getDiyetisyenId(){
+        return sNutritionist.getNut_id() ; 
     }
     
 }

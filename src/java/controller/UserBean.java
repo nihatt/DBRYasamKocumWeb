@@ -12,6 +12,7 @@ import dao.UserDAO;
 import java.util.ArrayList;
 import javax.servlet.http.Part;
 
+
 /**
  *
  * @author YILMAZ
@@ -232,5 +233,24 @@ public class UserBean {
 
     public void setPsych_id(int psych_id) {
         this.psych_id = psych_id;
+    }
+    
+    public String selectPt(){
+        UserDAO userDAO = new UserDAO();
+        userDAO.selectHoca(user_id, PersonalTrainerBean.getStaticPersonalTrainerId(),"s"); // s mean personal trainer
+        return "profilepage" ; 
+        
+    }
+    public String selectPsych(){
+       UserDAO userDAO = new UserDAO();
+        userDAO.selectHoca(user_id,PsychologistBean.getStaticPsikologId() ,"p"); // p mean psikolog
+       return "profilepage" ; 
+        
+    }
+    public String selectNut(){
+       UserDAO userDAO = new UserDAO();
+        userDAO.selectHoca(user_id,NutritionistBean.getDiyetisyenId() ,"d"); // d mean diyetisyen
+        return "profilepage" ;  
+        
     }
 }

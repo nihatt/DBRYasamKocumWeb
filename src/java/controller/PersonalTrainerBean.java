@@ -31,6 +31,9 @@ public class PersonalTrainerBean {
         }
         return  sPersonalTrainer.getPt_name()+" "+sPersonalTrainer.getPt_surname() ; 
     }
+    public static int getStaticPersonalTrainerId(){
+        return sPersonalTrainer.getPt_id() ; 
+    }
     
     public String getContentOfPersonalTrainer(){
         if(sPersonalTrainer == null){
@@ -266,5 +269,7 @@ public class PersonalTrainerBean {
                 isStar3(),isStar2(),isStar1()); 
         return personalTrainerDao;
     }
+    
+   
     
 }

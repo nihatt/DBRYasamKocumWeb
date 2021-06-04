@@ -21,8 +21,8 @@ and open the template in the editor.
         <title>KİŞİSEL ANTRENÖRLER</title>
     </h:head>
     <body>
-        
-        
+
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
             <div class="container-fluid" >
                 <i class="fas fa-child" style="padding: 5px"></i>
@@ -46,7 +46,7 @@ and open the template in the editor.
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
-                                
+
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
@@ -59,7 +59,7 @@ and open the template in the editor.
                         <h:commandButton action = "login?faces-redirect=true" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
-                                         action="#{userBean.cikisYap()}"></h:commandButton>
+                                          action="#{userBean.cikisYap()}"></h:commandButton>
 
                     </h:form>
                 </div>
@@ -272,16 +272,20 @@ and open the template in the editor.
                                                     <div>
                                                         <h:outputLink value="https://wa.link/6e6uxa" target="_blank"> <i class="fab fa-whatsapp fa-2x" style="color:rgb(64, 195, 80);"></i></h:outputLink>
                                                         <div class="instagram"><h:outputLink value="#{list.pt_link}" target="_blank"> <i class="fab fa-instagram fa-2x" style=""></i></h:outputLink></div>
-                                                         
+
                                                     </div><!-- comment -->
 
                                                     <div>
-                                                        <h:commandLink value="Daha Fazla Bilgi" 
-                                                                       style="color: black;"
-                                                                       onclick="$('.modal').modal('show')"
-                                                                       action="#{personalTrainerBean.firstSelectPT(list)}">
+                                                        <h:commandLink  rendered="#{userBean.loggedIn}"
+                                                                        value="Daha Fazla Bilgi" 
+                                                                        style="color: black;"
+                                                                        onclick="$('.modal').modal('show')"
+                                                                        action="#{personalTrainerBean.firstSelectPT(list)}">
                                                             <f:ajax render="div-id"/>
                                                         </h:commandLink>
+                                                        <h:commandLink value="Üye Olmak İster misiniz ? " 
+                                                                       action="login"
+                                                                       rendered="#{!(userBean.loggedIn)}"/>    
                                                     </div>
 
 
@@ -298,25 +302,30 @@ and open the template in the editor.
                 </div>       
             </div>
         </div>
-        <div class="modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div jsf:id="div-id" class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">#{personalTrainerBean.getTitleOfPersonalTrainer()}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            #{personalTrainerBean. getContentOfPersonalTrainer()}
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+        <h:form prependId="false" id="select-button-form">
+            <div class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div jsf:id="div-id" class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">#{personalTrainerBean.getTitleOfPersonalTrainer()}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                #{personalTrainerBean. getContentOfPersonalTrainer()}
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                            <h:commandButton class="btn btn-primary" value="Antrenor Sec"
+                                             action="#{userBean.selectPt()}"/>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </h:form>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </body>

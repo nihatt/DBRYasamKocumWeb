@@ -47,7 +47,7 @@
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "login?faces-redirect=true" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
                                           action="#{userBean.cikisYap()}"></h:commandButton>
@@ -76,7 +76,7 @@
                                 <div class="panel-body" style="display: flex;justify-content: space-between">
                                     <h:form class="d-flex" > 
                                         <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-success btn-block"   value="Profili Düzenle"  style="width: 50vw;"></h:commandButton>
-                                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-danger btn-block"   value="Çıkış Yap"  style="width: 50vw;"></h:commandButton>
+                                        <h:commandButton action = "deneme" rendered="true" class="btn btn-danger btn-block"   value="Çıkış Yap"  style="width: 50vw;"></h:commandButton>
                                     </h:form>
                                 </div>
                             </div>

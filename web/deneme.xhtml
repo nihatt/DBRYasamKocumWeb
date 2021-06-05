@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
@@ -61,79 +62,81 @@
                 </div>
             </div>
         </nav>
-
+        
         <div class="container1">
             <div class="forms-container">
+
                 <div class="signin-signup">
+
                     <h:form prependId="false" id="form-1" class="sign-in-form">
                         <h2 class="title">Giriş Yap</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <h:inputText id="sign-in-email" p:type="email" class="input"
-                                       value="#{userBean.user_main_in}"
-                                        p:placeholder="E-mail"
-                                       requiredMessage="Lütfen e-mail adresinizi giriniz"/>
+                                         value="#{userBean.user_main_in}"
+                                         p:placeholder="E-mail"
+                                         requiredMessage="Lütfen e-mail adresinizi giriniz"/>
                         </div>
                         <div class="input-field input-passwd">
                             <i class="fas lock fa-lock"></i>
                             <h:inputText id="sign-in-pass" p:type="password" class="input" p:data-type="password"
-                                       value="#{userBean.user_password_in}"
-                                       p:placeholder="Sifre"
-                                       requiredMessage="Lütfen şifrenizi giriniz"/>
+                                         value="#{userBean.user_password_in}"
+                                         p:placeholder="Sifre"
+                                         requiredMessage="Lütfen şifrenizi giriniz"/>
                             <i class="material-icons visibility">visibility_off</i>
                         </div>
-                        <span>Hata Mesajı</span>
                         <h:commandButton class="btn solid"
-                                                 action="#{userBean.actionSignIn()}"
-                                                 value="Giris Yap"/>
+                                         action="#{userBean.actionSignIn()}"
+                                         value="Giris Yap"/>
                     </h:form>
-                    <h:form  prependId="false" id="form-2" class="sign-up-form" style="display: flex;align-items: center;">
+                    <h:form  enctype="multipart/form-data"
+                             prependId="false" id="form-2" class="sign-up-form" style="display: flex;align-items: center;">
                         <h2 class="title">Üye Ol</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <h:inputText id="sign-up-x" p:type="text" class="input"
-                                       value="#{userBean.user_name}"
-                                       p:placeholder="İsim"
-                                       requiredMessage="Lütfen isminizi giriniz"
-                                       validatorMessage="Uygun bir isim giriniz"/>
+                                         value="#{userBean.user_name}"
+                                         p:placeholder="İsim"
+                                         requiredMessage="Lütfen isminizi giriniz"
+                                         validatorMessage="Uygun bir isim giriniz"/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <h:inputText id="sign-up-y" p:type="text" class="input"
-                                       value="#{userBean.user_surname}"
-                                       p:placeholder="Soyisim"
-                                       requiredMessage="Lütfen soyisminizi giriniz"
-                                       validatorMessage="Uygun bir soyisim giriniz" />
+                                         value="#{userBean.user_surname}"
+                                         p:placeholder="Soyisim"
+                                         requiredMessage="Lütfen soyisminizi giriniz"
+                                         validatorMessage="Uygun bir soyisim giriniz" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
                             <h:inputText id="sign-up-email" p:type="email" class="input"
-                                       value="#{userBean.user_mail}"
-                                       p:placeholder="E-mail"
-                                       requiredMessage="Lütfen e-mail adresinizi giriniz"/>
+                                         value="#{userBean.user_mail}"
+                                         p:placeholder="E-mail"
+                                         requiredMessage="Lütfen e-mail adresinizi giriniz"/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
                             <h:inputText id="sign-up-pass" p:type="password" class="input" p:data-type="password"
-                                       value="#{userBean.user_password}"
-                                       p:placeholder="Sifre"
-                                       requiredMessage="Lütfen şifrenizi giriniz"/>
+                                         value="#{userBean.user_password}"
+                                         p:placeholder="Sifre"
+                                         requiredMessage="Lütfen şifrenizi giriniz"/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <h:inputText id="sign-up-resim"  p:type="file" class="input"
-                                       p:accept="image/*"
-                                       value="#{userBean.doc}"/>
+                            <input jsf:id="sign-up-resim"  type="file" class="input"
+                                   p:accept="image/*"
+                                   value="#{userBean.doc}"/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
                             <h:inputText id="sign-up-tarih"  p:type="date" class="input"
 
-                                       value="#{userBean.user_date}"/>
+                                         value="#{userBean.user_date}"/>
                         </div>
-                        <h:commandButton class="btn"
-                                                 action="#{userBean.actionSignUp()}"
-                                                 value="Uye Ol"/>
+                        <h:commandButton class="btn" 
+                                         action="#{userBean.actionSignUp()}"
+                                         value="Uye Ol"/>
                     </h:form>
                 </div>
             </div>
@@ -147,7 +150,7 @@
                         <br />
                         <br />
                         <button class="btn transparent" id="sign-up-btn">
-                            Üye Ol
+                            Uye Ol
                         </button>
                     </div>
                 </div>
@@ -162,6 +165,36 @@
                         <button class="btn transparent" id="sign-in-btn">
                             Giriş Yap
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <h:outputText rendered="#{userBean.booleanGirisYanlis()}"
+                                         value="Giris Yaparken hata meydana geldi"/> 
+                            <h:outputText rendered="#{userBean.booleanÜyeYanlis()}"
+                                          value="Uye olurken hata meydana geldi"/> 
+                            <h:outputText rendered="#{!(userBean.booleanGirisYanlis()) and !(userBean.booleanÜyeYanlis())}"
+                                          value="Merhaba :)"/>
+                            
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><h:outputText rendered="#{userBean.booleanGirisYanlis()}"
+                                         value="Girilen degerlere uygun record yoktur."/> 
+                            <h:outputText rendered="#{userBean.booleanÜyeYanlis()}"
+                                          value="Lütfen tüm alanlari eksizsik doldurunuz."/> 
+                            <h:outputText rendered="#{!(userBean.booleanGirisYanlis()) and !(userBean.booleanÜyeYanlis())}"
+                                          value="Hos Geldiniz. İlk defa giriyorsanız üye olmayı mevcut hesabınız varsa giris yapmayı unutmayınız"/> 
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        
                     </div>
                 </div>
             </div>
@@ -199,6 +232,13 @@
                 password = !password;
             });
 
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(function () {
+                $(".modal").modal('show');
+            });
         </script>
     </h:body>
 </html>

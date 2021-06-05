@@ -5,13 +5,17 @@
  */
 package controller;
 
-import javax.faces.bean.ManagedBean ;
-import javax.faces.bean.SessionScoped ;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import entity.User;
 import dao.UserDAO;
+import entity.Nutritionist;
+import entity.PersonalTrainer;
+import entity.Psychologist;
 import java.util.ArrayList;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
-
 
 /**
  *
@@ -20,14 +24,79 @@ import javax.servlet.http.Part;
 @ManagedBean
 @SessionScoped
 public class UserBean {
-     private int user_id  ; 
-    private String user_name ; 
-    private String user_surname ; 
-    private String user_mail ; 
-    private String user_main_in ;
-    private String user_password ; 
-    private String user_password_in ; 
-    private ArrayList<User> profileUser ; 
+
+    private int user_id;
+    private String user_name;
+    private String user_surname;
+    private String user_mail;
+    private String user_main_in;
+    private String user_password;
+    private String user_password_in;
+    private ArrayList<User> profileUser;
+    private static boolean   girisYanlis = false;
+    private static boolean  üyeYanlis = false;
+    private ArrayList<PersonalTrainer> personalTrainerHoca ; 
+    private ArrayList<Nutritionist> nutritionistHoca ; 
+
+    public static boolean isGirisYanlis() {
+        return girisYanlis;
+    }
+
+    public static void setGirisYanlis(boolean girisYanlis) {
+        UserBean.girisYanlis = girisYanlis;
+    }
+
+    public static boolean isÜyeYanlis() {
+        return üyeYanlis;
+    }
+
+    public static void setÜyeYanlis(boolean üyeYanlis) {
+        UserBean.üyeYanlis = üyeYanlis;
+    }
+
+    public ArrayList<PersonalTrainer> getPersonalTrainerHoca() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getPTByUser_Id(user_id) ; 
+    }
+
+    public void setPersonalTrainerHoca(ArrayList<PersonalTrainer> personalTrainerHoca) {
+        this.personalTrainerHoca = personalTrainerHoca;
+    }
+
+    public ArrayList<Nutritionist> getNutritionistHoca() {
+        // buraya yazilacak.
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getNutritionistByUser_Id(user_id) ; 
+        
+    }
+
+    public void setNutritionistHoca(ArrayList<Nutritionist> nutritionistHoca) {
+        this.nutritionistHoca = nutritionistHoca;
+    }
+
+    public ArrayList<Psychologist> getPsychologistHoca() {
+        // buraya yazilacak.
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getPsychologistByUser_Id(user_id) ; 
+        
+    }
+
+    public void setPsychologistHoca(ArrayList<Psychologist> psychologistHoca) {
+        this.psychologistHoca = psychologistHoca;
+    }
+    private ArrayList<Psychologist> psychologistHoca ; 
+    
+    public static void resetBooleanMessages(){
+        girisYanlis = false ; 
+        üyeYanlis = false ; 
+    }
+
+    public static boolean booleanGirisYanlis(){
+        return girisYanlis ; 
+    }
+    public static boolean booleanÜyeYanlis(){
+        return üyeYanlis ; 
+    }
 
     public ArrayList<User> getProfileUser() {
         UserDAO userDAO = new UserDAO();
@@ -41,7 +110,6 @@ public class UserBean {
         this.profileUser = profileUser;
     }
 
- 
     public String getUser_main_in() {
         return user_main_in;
     }
@@ -57,40 +125,50 @@ public class UserBean {
     public void setUser_password_in(String user_password_in) {
         this.user_password_in = user_password_in;
     }
-    private String user_path ; 
-    private String user_date ; 
-    private int pt_id ; 
-    private int nut_id ; 
-    private int psych_id ; 
+    private String user_path;
+    private String user_date;
+    private int pt_id;
+    private int nut_id;
+    private int psych_id;
     // bu bolean ifade  data base de saklanmaz sadece bir user giris yapmis mi diye kontrol eder.
-    private boolean loggedIn = false ; 
+    private boolean loggedIn = false;
     //-------------------------------------------------------------------------------------------
-    
-    // for Sign-up
 
-    
-    public String actionSignUp(){
+    // for Sign-up
+    public String actionSignUp() {
 //        if((new UserDAO().checkMailDuplicate(user_mail))){
 //            
 //             return "index" ; 
 //        }
-       UserDAO userDAO = new UserDAO();
-       userDAO.createUser(user_name, user_surname, user_mail, user_password, doc, user_date) ; 
-       user_name = null ; 
-       user_surname = null ; 
-       user_mail = null ; 
-       user_date = null ; 
-       user_password = null ; 
-       return null ; 
-    }
-    
-    public String actionSignIn(){
-        UserDAO userDAO = new UserDAO();
-        User tempUser = userDAO.girisYap(user_main_in, user_password_in) ; 
-        if(tempUser == null){
-            return null ; 
+        if (user_name == null || user_surname == null || user_mail == null || user_password == null || doc == null || user_date == null) {
+            üyeYanlis = true;
+            girisYanlis = false;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Eksik Yerleri doldurunuz!"));
+            return null;
         }
-        else{
+        girisYanlis = false;
+        üyeYanlis = false;
+        UserDAO userDAO = new UserDAO();
+        userDAO.createUser(user_name, user_surname, user_mail, user_password, doc, user_date);
+        user_name = null;
+        user_surname = null;
+        user_mail = null;
+        user_date = null;
+        user_password = null;
+        return null;
+    }
+
+    public String actionSignIn() {
+        UserDAO userDAO = new UserDAO();
+        User tempUser = userDAO.girisYap(user_main_in, user_password_in);
+        if (tempUser == null) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Girilen degerlere uygun kayıt bulunamadı!"));
+            üyeYanlis = false;
+            girisYanlis = true;
+            return null;
+        } else {
+            girisYanlis = false;
+            üyeYanlis = false;
             user_id = tempUser.getUser_id();
             user_name = tempUser.getUser_name();
             user_surname = tempUser.getUser_surname();
@@ -99,24 +177,18 @@ public class UserBean {
             user_path = tempUser.getUser_path();
             user_date = tempUser.getUser_date();
             pt_id = tempUser.getPt_id();
-            nut_id=tempUser.getNut_id();
+            nut_id = tempUser.getNut_id();
             psych_id = tempUser.getPsych_id();
-            loggedIn = true ; 
-            return "index"  ;
+            loggedIn = true;
+            return "index";
         }
-        
-        
-        
+
     }
-    
-    
+
     //---------------------------------------
-    
-    
-    
-        
     //This segment is used for picture uploading
-    private Part doc ;
+    private Part doc;
+
     public Part getDoc() {
         return doc;
     }
@@ -126,27 +198,25 @@ public class UserBean {
     }
 
     //------------------------------------------
-    
     // cikis yap
-        public String cikisYap(){
-            user_id = 0 ; 
-            user_name = null ; 
-            user_surname = null ; 
-            user_mail = null ; 
-            user_main_in = null ; 
-            user_password = null ; 
-            user_password_in = null ;
-            user_path = null ; 
-            user_date = null ; 
-            pt_id = 0 ; 
-            nut_id = 0 ; 
-            psych_id = 0 ; 
-            loggedIn=false ; 
-            return "index" ; 
-        }
-    
-    //----------------
+    public String cikisYap() {
+        user_id = 0;
+        user_name = null;
+        user_surname = null;
+        user_mail = null;
+        user_main_in = null;
+        user_password = null;
+        user_password_in = null;
+        user_path = null;
+        user_date = null;
+        pt_id = 0;
+        nut_id = 0;
+        psych_id = 0;
+        loggedIn = false;
+        return "index";
+    }
 
+    //----------------
     public boolean isLoggedIn() {
         return loggedIn;
     }
@@ -178,7 +248,7 @@ public class UserBean {
     public void setUser_surname(String user_surname) {
         this.user_surname = user_surname;
     }
-    
+
     public String getUser_mail() {
         return user_mail;
     }
@@ -234,23 +304,25 @@ public class UserBean {
     public void setPsych_id(int psych_id) {
         this.psych_id = psych_id;
     }
-    
-    public String selectPt(){
+
+    public String selectPt() {
         UserDAO userDAO = new UserDAO();
-        userDAO.selectHoca(user_id, PersonalTrainerBean.getStaticPersonalTrainerId(),"s"); // s mean personal trainer
-        return "profilepage" ; 
-        
+        userDAO.selectHoca(user_id, PersonalTrainerBean.getStaticPersonalTrainerId(), "s"); // s mean personal trainer
+        return "profilepage";
+
     }
-    public String selectPsych(){
-       UserDAO userDAO = new UserDAO();
-        userDAO.selectHoca(user_id,PsychologistBean.getStaticPsikologId() ,"p"); // p mean psikolog
-       return "profilepage" ; 
-        
+
+    public String selectPsych() {
+        UserDAO userDAO = new UserDAO();
+        userDAO.selectHoca(user_id, PsychologistBean.getStaticPsikologId(), "p"); // p mean psikolog
+        return "profilepage";
+
     }
-    public String selectNut(){
-       UserDAO userDAO = new UserDAO();
-        userDAO.selectHoca(user_id,NutritionistBean.getDiyetisyenId() ,"d"); // d mean diyetisyen
-        return "profilepage" ;  
-        
+
+    public String selectNut() {
+        UserDAO userDAO = new UserDAO();
+        userDAO.selectHoca(user_id, NutritionistBean.getDiyetisyenId(), "d"); // d mean diyetisyen
+        return "profilepage";
+
     }
 }

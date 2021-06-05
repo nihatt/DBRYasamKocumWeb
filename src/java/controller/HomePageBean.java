@@ -14,6 +14,7 @@ import java.util.Date;
 public class HomePageBean {
     public String getTime(){
         PersonalTrainerBean.setReset(true);
+        UserBean.resetBooleanMessages();
         return DateFormat.getTimeInstance(DateFormat.MEDIUM).format(new Date());
     }
 }

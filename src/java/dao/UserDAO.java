@@ -5,6 +5,9 @@
  */
 package dao;
 
+import entity.Nutritionist;
+import entity.PersonalTrainer;
+import entity.Psychologist;
 import util.DBConnection ; 
 import entity.User ; 
 import java.io.File;
@@ -39,6 +42,112 @@ public class UserDAO {
     }
     //-----------------------------------------------
     
+    public ArrayList<PersonalTrainer> getPTByUser_Id(int user_id){
+        int pt_id = 0  ; 
+        try{
+            String query = "select PT_ID FROM USERS WHERE USER_ID =  "+user_id ;
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query) ; 
+            
+            while(resultSet.next()){
+                pt_id = resultSet.getInt(1) ; 
+            }
+            if(pt_id == 0 ){
+                return null ; 
+            }
+            // pt_id'yi aldik simdi sira bu id'ye sahip pt'nin bilgilerini almakta.
+            query = "SELECT * FROM PTS WHERE PT_ID = " + pt_id ; 
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            ArrayList<PersonalTrainer> tempList = null ; 
+            while(resultSet.next()){
+                tempList = new ArrayList<>();
+                tempList.add(new PersonalTrainer(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),
+                resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getBoolean(10),resultSet.getInt(11),
+                resultSet.getDouble(12),resultSet.getInt(13),resultSet.getString(14))) ; 
+            }
+            return tempList ; 
+            
+        }catch(Exception e1){
+            
+        }
+        return null ; 
+    }
+    
+    public ArrayList<Nutritionist> getNutritionistByUser_Id(int user_id){
+        int nut_id = 0 ; 
+        try{
+            String query = "select NUT_ID FROM USERS WHERE USER_ID =  "+user_id ;
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query) ; 
+            while(resultSet.next()){
+                nut_id = resultSet.getInt(1) ; 
+            }
+            if(nut_id == 0 ){
+                return null ; 
+            }
+            query = "SELECT * FROM NUTS WHERE NUT_ID = " + nut_id ; 
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            ArrayList<Nutritionist> tempList = null ; 
+            while(resultSet.next()){
+                tempList = new ArrayList<>();
+                tempList.add(new Nutritionist(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),
+                resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getBoolean(10),resultSet.getInt(11),
+                resultSet.getDouble(12),resultSet.getString(13))) ; 
+            }
+            return tempList ; 
+        }catch(Exception e1){
+            
+        }
+        
+        
+        return null ; 
+    }
+    
+    public ArrayList<Psychologist> getPsychologistByUser_Id(int user_id){
+        int psych_id = 0 ; 
+        try{
+            String query = "select PSYCHS_ID FROM USERS WHERE USER_ID =  "+user_id ;
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query) ; 
+            while(resultSet.next()){
+                psych_id = resultSet.getInt(1) ; 
+            }
+            if(psych_id == 0 ){
+                return null ; 
+            }
+            query = "SELECT * FROM PSYCHS WHERE PSYCH_ID = " + psych_id ; 
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            ArrayList<Psychologist> tempList = null ; 
+            while(resultSet.next()){
+                tempList = new ArrayList<>();
+                tempList.add(new Psychologist(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),
+                resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getBoolean(10),resultSet.getInt(11),
+                resultSet.getDouble(12),resultSet.getString(13))) ; 
+            }
+            return tempList ; 
+            
+        }catch(Exception e1){
+            
+        }
+        
+        
+        return null ; 
+    }
     
 
     // for mail check-up

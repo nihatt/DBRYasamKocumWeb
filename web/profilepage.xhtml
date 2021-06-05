@@ -59,7 +59,7 @@
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
         <h:form prependId="false" id="profil-form">
-                <ui:repeat value="#{userBean.profileUser}" var="list">
+            <ui:repeat value="#{userBean.profileUser}" var="list">
                 <div class="container" style="padding-top: 80px">
                     <div class="row">
                         <div class="col-sm-3">
@@ -76,7 +76,7 @@
                                 <div class="panel-body" style="display: flex;justify-content: space-between">
                                     <h:form class="d-flex" > 
                                         <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-success btn-block"   value="Profili Düzenle"  style="width: 50vw;"></h:commandButton>
-                                        <h:commandButton action = "deneme" rendered="true" class="btn btn-danger btn-block"   value="Çıkış Yap"  style="width: 50vw;"></h:commandButton>
+                                        <h:commandButton action = "#{userBean.cikisYap()}" rendered="true" class="btn btn-danger btn-block"   value="Çıkış Yap"  style="width: 50vw;"></h:commandButton>
                                     </h:form>
                                 </div>
                             </div>
@@ -123,25 +123,42 @@
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent" >
                                     <div class="tab-pane fade show  active row" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-                                        <div style="display: flex;flex-direction: row;padding: 10px;">
-                                            <div class="card" style="width: 18rem;margin-right: 20px">
-                                                <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Eğitmen adı</h5>
-                                                    <p class="card-text">eğitmen hakkında genel bilgi</p>
+                                        <ui:repeat value="#{userBean.personalTrainerHoca}" var="list">
+                                            <div style="display: flex;flex-direction: row;padding: 10px;">
+                                                <div class="card" style="width: 18rem;margin-right: 20px">
+                                                    <h:graphicImage library="images" name="#{list.pt_path}" class="card-img-top"/>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">#{list.pt_name} #{list.pt_surname}</h5>
+                                                        <p class="card-text">eğitmen hakkında genel bilgi</p>
 
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </ui:repeat>
+                                        <ui:repeat value="#{userBean.psychologistHoca}" var="list">
+                                            <div style="display: flex;flex-direction: row;padding: 10px;">
+                                                <div class="card" style="width: 18rem;margin-right: 20px">
+                                                    <h:graphicImage class="card-img-top" library="images" name="#{list.psych_path}"  />
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">#{list.psych_name}</h5>
+                                                        <p class="card-text">eğitmen hakkında genel bilgi</p>
 
-                                            <div class="card" style="width: 18rem;margin-right: 20px">
-                                                <img class="card-img-top" src="https://static.pembeteknoloji.com.tr/wp-content/uploads/2020/10/binnur-kaya-instagram-hesabi-acti-olay-oldu.jpg" alt="Card image cap"></img>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </ui:repeat>
+                                        <ui:repeat value="#{userBean.nutritionistHoca}" var="list">
+                                            <div style="display: flex;flex-direction: row;padding: 10px;">
+                                                <div class="card" style="width: 18rem;margin-right: 20px">
+                                                    <h:graphicImage class="card-img-top" library="images" name="#{list.nut_path}"  />
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">#{list.nut_name} #{list.nut_surname}</h5>
+                                                        <p class="card-text">eğitmen hakkında genel bilgi</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ui:repeat>
 
 
                                     </div>

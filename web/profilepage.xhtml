@@ -122,45 +122,54 @@
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent" >
-                                    <div class="tab-pane fade show  active row" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-                                        <ui:repeat value="#{userBean.personalTrainerHoca}" var="list">
-                                            <div style="display: flex;flex-direction: row;padding: 10px;">
-                                                <div class="card" style="width: 18rem;margin-right: 20px">
-                                                    <h:graphicImage library="images" name="#{list.pt_path}" class="card-img-top"/>
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">#{list.pt_name} #{list.pt_surname}</h5>
-                                                        <p class="card-text">eğitmen hakkında genel bilgi</p>
+                                    <div class="tab-pane fade show  active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
 
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <div class="card profile-card-1">
+                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-sample1" class="background"/>
+                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
+                                                    <div class="card-content">
+                                                        <h3>Savannah Fields</h3>
+                                                        <div class="icon-block">
+                                                            <button class="btn btn-outline-info">ÖNERİLEN İÇERİK</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </ui:repeat>
-                                        <ui:repeat value="#{userBean.psychologistHoca}" var="list">
-                                            <div style="display: flex;flex-direction: row;padding: 10px;">
-                                                <div class="card" style="width: 18rem;margin-right: 20px">
-                                                    <h:graphicImage class="card-img-top" library="images" name="#{list.psych_path}"  />
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">#{list.psych_name}</h5>
-                                                        <p class="card-text">eğitmen hakkında genel bilgi</p>
 
+                                            <div class="col-md-4">
+                                                <div class="card profile-card-1">
+                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-sample1" class="background"/>
+                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
+                                                    <div class="card-content">
+                                                        <h3>Savannah Fields</h3>
+                                                        <div class="icon-block">
+                                                            <button class="btn btn-outline-info">ÖNERİLEN İÇERİK</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </ui:repeat>
-                                        <ui:repeat value="#{userBean.nutritionistHoca}" var="list">
-                                            <div style="display: flex;flex-direction: row;padding: 10px;">
-                                                <div class="card" style="width: 18rem;margin-right: 20px">
-                                                    <h:graphicImage class="card-img-top" library="images" name="#{list.nut_path}"  />
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">#{list.nut_name} #{list.nut_surname}</h5>
-                                                        <p class="card-text">eğitmen hakkında genel bilgi</p>
 
+
+                                            <div class="col-md-4">
+                                                <div class="card profile-card-1">
+                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-sample1" class="background"/>
+                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
+                                                    <div class="card-content">
+                                                        <h3>Savannah Fields</h3>
+                                                        <div class="icon-block">
+                                                            <button class="btn btn-outline-info">ÖNERİLEN İÇERİK</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </ui:repeat>
 
 
+
+
+                                        </div>
                                     </div>
 
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

@@ -41,7 +41,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
-                                
+
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
@@ -51,10 +51,10 @@
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap|Üye Ol "  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
-                                         action="#{userBean.cikisYap()}"></h:commandButton>
+                                          action="#{userBean.cikisYap()}"></h:commandButton>
 
                     </h:form>
                 </div>
@@ -65,6 +65,7 @@
                 enctype="multipart/form-data">
             <div class="login-wrap" style="display:flex;justify-content: center;align-items: center;padding-top: 150px;">
                 <div class="login-html mx-auto my-auto" >
+
                     <input id="tab-1" type="radio" name="tab" class="sign-in" checked="true"/><label for="tab-1" class="tab">Giris Yap</label>
                     <input id="tab-2" type="radio" name="tab" class="sign-up"/><label for="tab-2" class="tab">Üye Ol</label>
                     <div class="login-form">
@@ -85,9 +86,14 @@
 
                             </div>
                             <div class="group">
+                                <h:panelGroup>
+                                <h:commandButton class="button1"
+                                                 action="#{userBean.actionSignIn()}"
+                                                 value="Şifreni mi Unuttun ?"/>
                                 <h:commandButton class="button"
                                                  action="#{userBean.actionSignIn()}"
                                                  value="Giris Yap"/>
+                                </h:panelGroup>
                             </div>
                             <div class="hr"></div>
                             <div class="foot-lnk">
@@ -120,7 +126,7 @@
                                        validateMessage="Hatali isim"
                                        validatorMessage="Uygun bir isim giriniz">
 
-                                    
+
                                 </input>
                             </div>
                             <div class="group">
@@ -130,7 +136,7 @@
 
                                        requiredMessage="Lütfen soyisminizi giriniz"
                                        validatorMessage="Uygun bir soyisim giriniz">
-                                    
+
                                 </input>    
                             </div>
                             <div class="group">

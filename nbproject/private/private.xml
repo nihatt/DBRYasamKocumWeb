@@ -12,10 +12,15 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/YILMAZ/Documents/NetBeansProjects/dbrsyasamkoc/src/java/util/DBConnection.java</file>
-            <file>file:/C:/Users/YILMAZ/Documents/NetBeansProjects/dbrsyasamkoc/src/java/controller/UserBean.java</file>
-            <file>file:/C:/Users/YILMAZ/Documents/NetBeansProjects/dbrsyasamkoc/src/java/dao/UserDAO.java</file>
-            <file>file:/C:/Users/YILMAZ/Documents/NetBeansProjects/dbrsyasamkoc/web/profilepage.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/profilepage.css</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/src/java/controller/UserBean.java</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/yorumlar.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/profilepage.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/deneme.css</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/sporhocalari.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/deneme.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/login.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/index.xhtml</file>
         </group>
     </open-files>
 </project-private>

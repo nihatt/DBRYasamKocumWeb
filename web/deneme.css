@@ -400,7 +400,7 @@ span {
 /* media query */
 @media (max-width: 870px) {
     .container1 {
-        margin-top: 90px;
+        
         min-height: 800px;
         height: 100vh;
     }
@@ -545,6 +545,10 @@ span {
         -webkit-transform: translate(-50%, 0);
         -ms-transform: translate(-50%, 0);
         transform: translate(-50%, 0);
+    }
+    .btn{
+        padding-top: 0;
+        
     }
 }
 @media (max-width: 570px) {

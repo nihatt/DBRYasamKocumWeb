@@ -35,6 +35,15 @@ public class UserBean {
     private String user_password_in;
     private String user_mail_reset ;
     private String user_password_reset ; 
+    private String password_reset ; 
+
+    public String getPassword_reset() {
+        return password_reset;
+    }
+
+    public void setPassword_reset(String password_reset) {
+        this.password_reset = password_reset;
+    }
 
     public String getUser_mail_reset() {
         return user_mail_reset;
@@ -99,6 +108,14 @@ public class UserBean {
         return null; 
     }
     
+    public String actionSifreReset(){
+        UserDAO userDAO = new UserDAO() ;
+        if(password_reset == null || password_reset.equals("")){
+            return null ; 
+        }
+         userDAO.actionSifreDegis(user_mail, password_reset);
+         return null ; 
+    }
     private static int sUser_id ; 
     
     

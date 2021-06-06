@@ -5,7 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f ="http://java.sun.com/jsf/core"
-      xmlns:p="http://java.sun.com/jsf/passthrough">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
@@ -78,9 +78,9 @@
                                 </div>
                                 <div class="panel-body" style="display: flex;justify-content: space-between">
                                     <h:form class="d-flex" > 
-                                        <h:commandButton  rendered="true" class="btn btn-success btn-block"   value="Profili Düzenle"  style="width: 50vw;"
-                                            onclick="$('#profil-div').modal('show')">
-                                                              <f:ajax render="profil-render"/>
+                                        <h:commandButton  rendered="true" class="btn btn-success btn-block"   value="Kisisel Bilgiler"  style="width: 50vw;"
+                                                          onclick="$('#profil-div').modal('show')">
+                                            <f:ajax render="profil-render"/>
                                         </h:commandButton>
                                         <h:commandButton action = "#{userBean.cikisYap()}" rendered="true" class="btn btn-danger btn-block"   value="Çıkış Yap"  style="width: 50vw;"></h:commandButton>
                                     </h:form>
@@ -325,15 +325,64 @@
                 <div jsf:id="profil-render" class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
+                            <h5 class="modal-title">#{userBean.user_name} #{userBean.user_surname}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>Modal body text goes here.</p>
+                            <p>
+                                <h:outputText value="Dogum Tarihi : "/>
+                                <h:outputText value="#{userBean.user_date}"/>
+                                <br/>
+                                <h:outputText value="E-mail Adresi :"/>
+                                <h:outputText value="#{userBean.user_mail}"/>
+                                <br/>
+                                <h:outputText value="İsim :"/>
+                                <h:outputText value="#{userBean.user_name}"/>
+                                <br/>
+                                <h:outputText value="İsim :"/>
+                                <h:outputText value="#{userBean.user_surname}"/>
+                                <br/>
+                                <h:commandLink 
+                                    onclick="$('#sifre-degis-div').modal('show')"
+                                    value="Sifre Değistir">
+                                    <f:ajax render="sifre-degis"/>
+                                </h:commandLink>
+
+                            </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+        <h:form prependId="false">
+            <div id="sifre-degis-div" class="modal" tabindex="-1">
+                <div jsf:id="sifre-render" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Sifre Degis</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <h:panelGroup  >
+                                    <h:outputText value="Yeni Sifrenizi Giriniz."/>
+                                    <h:inputText id="sign-reset-pass" p:type="password" class="input" p:data-type="password"
+                                         value="#{userBean.password_reset}"
+                                         p:placeholder="Yeni Sifre"
+                                         requiredMessage="Lütfen şifrenizi giriniz"/>
+                                    <h:commandButton value="sifre degis" 
+                                                     action="#{userBean.actionSifreReset()}"/>
+                                    <br/>
+                                    <h:graphicImage library="images" name="/icons/lock.png" />
+                                    
+                                </h:panelGroup>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            
                         </div>
                     </div>
                 </div>

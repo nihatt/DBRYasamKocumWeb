@@ -9,12 +9,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import entity.User;
 import dao.UserDAO;
+import entity.NUT_Tarif;
 import entity.Nutritionist;
+import entity.PSYCH_Yazi;
 import entity.PersonalTrainer;
 import entity.Psychologist;
 import java.util.ArrayList;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import entity.PT_Video;
 import javax.servlet.http.Part;
 
 /**
@@ -32,11 +33,178 @@ public class UserBean {
     private String user_main_in;
     private String user_password;
     private String user_password_in;
+    private String user_mail_reset ;
+    private String user_password_reset ; 
+
+    public String getUser_mail_reset() {
+        return user_mail_reset;
+    }
+
+    public void setUser_mail_reset(String user_mail_reset) {
+        this.user_mail_reset = user_mail_reset;
+    }
+
+    public String getUser_password_reset() {
+        return user_password_reset;
+    }
+
+    public void setUser_password_reset(String user_password_reset) {
+        this.user_password_reset = user_password_reset;
+    }
     private ArrayList<User> profileUser;
     private static boolean   girisYanlis = false;
     private static boolean  üyeYanlis = false;
+    private static boolean üyeOldu = false ; 
+    private static boolean sifreUnuttum = false ; 
+    private static boolean sifreOldu = false ; 
+    private static boolean sifreOlmadi = false ; 
+
+    public static void setSifreOldu(boolean sifreOldu) {
+        UserBean.sifreOldu = sifreOldu;
+    }
+
+    public static void setSifreOlmadi(boolean sifreOlmadi) {
+        UserBean.sifreOlmadi = sifreOlmadi;
+    }
+
+    public static boolean isSifreOldu() {
+        return sifreOldu;
+    }
+
+    public static boolean isSifreOlmadi() {
+        return sifreOlmadi;
+    }
+    
+    public static boolean getSifreUnuttum(){
+        return sifreUnuttum ; 
+    }
+    
+    public String actionSifreDegis(){
+        UserDAO userDAO = new UserDAO() ; 
+        if(user_password_reset == null || user_password_reset.equals("")){
+              girisYanlis = false;
+            üyeYanlis = false;
+             üyeOldu = false ; 
+            sifreUnuttum = false ; 
+             sifreOldu = false ; 
+            sifreOlmadi = false ; 
+            return null ; 
+        }
+        userDAO.actionSifreDegis(user_mail_reset, user_password_reset);
+         girisYanlis = false;
+            üyeYanlis = false;
+             üyeOldu = false ; 
+            sifreUnuttum = false ; 
+             
+        return null; 
+    }
+    
+    private static int sUser_id ; 
+    
+    
+
+    public static int getsUser_id() {
+        return sUser_id;
+    }
+
+    public static void setsUser_id(int sUser_id) {
+        UserBean.sUser_id = sUser_id;
+    }
+    
     private ArrayList<PersonalTrainer> personalTrainerHoca ; 
     private ArrayList<Nutritionist> nutritionistHoca ; 
+    
+    private static PT_Video sPt_video = null ; 
+
+    public static PSYCH_Yazi getsPsych_yazi() {
+        return sPsych_yazi;
+    }
+
+    public static void setsPsych_yazi(PSYCH_Yazi sPsych_yazi) {
+        UserBean.sPsych_yazi = sPsych_yazi;
+    }
+    private static NUT_Tarif sNut_tarif  = null ;   ;
+    private static PSYCH_Yazi sPsych_yazi = null ; 
+
+    public static NUT_Tarif getsNut_tarif() {
+        return sNut_tarif;
+    }
+
+    public static void setsNut_tarif(NUT_Tarif sNut_tarif) {
+        UserBean.sNut_tarif = sNut_tarif;
+    }
+    
+    public String getNameOfVideo(){
+        if(sPt_video == null){
+            return null ; 
+        }
+        return sPt_video.getPt_video_name();
+    }
+    public String getLinkOfVideo(){
+        if(sPt_video == null){
+            return null ; 
+        }
+        return sPt_video.getPt_video_link() ; 
+    }
+    public String actionForVideo(PersonalTrainer tempPT){
+        UserDAO userDAO = new UserDAO();
+        sPt_video = userDAO.getRandomVideo(tempPT.getPt_id()) ;
+        return null ; 
+    }
+    public String actionForTarif(Nutritionist tempNut){
+        UserDAO userDAO = new UserDAO();
+        sNut_tarif = userDAO.getRandomTarif(tempNut.getNut_id());
+        return null ; 
+    }
+    public String actionForYazi(Psychologist tempPsych){
+        UserDAO userDAO = new UserDAO();
+        sPsych_yazi = userDAO.getRandomYazi(tempPsych.getPsych_id()) ;  
+        return null ; 
+    }
+    public String getNameOfTarif(){
+        if(sNut_tarif == null){
+            return null ; 
+        }
+        else{
+            return sNut_tarif.getTarif_name();
+        }
+    }
+    public String getLinkOfTarif(){
+        if(sNut_tarif == null){
+            return null ; 
+        }
+        else{
+            return sNut_tarif.getTarif_link() ; 
+        }
+    }
+    public String getNameOfYazi(){
+        if(sPsych_yazi == null){
+            return null ; 
+        }
+        return sPsych_yazi.getYazi_name()  ;
+    }
+    public String getLinkOfYazi(){
+       if(sPsych_yazi == null){
+            return null ; 
+        } 
+       return sPsych_yazi.getYazi_link() ; 
+    }
+
+    public static boolean isÜyeOldu() {
+        return üyeOldu;
+    }
+
+    public static void setÜyeOldu(boolean üyeOldu) {
+        UserBean.üyeOldu = üyeOldu;
+    }
+
+    public static PT_Video getsPt_video() {
+        return sPt_video;
+    }
+
+    public static void setsPt_video(PT_Video sPt_video) {
+        UserBean.sPt_video = sPt_video;
+    }
 
     public static boolean isGirisYanlis() {
         return girisYanlis;
@@ -88,7 +256,12 @@ public class UserBean {
     
     public static void resetBooleanMessages(){
         girisYanlis = false ; 
+        sifreOldu = false ; 
+        sifreOlmadi = false ; 
         üyeYanlis = false ; 
+        sifreUnuttum = false ; 
+        üyeOldu = false ;
+        
     }
 
     public static boolean booleanGirisYanlis(){
@@ -97,7 +270,9 @@ public class UserBean {
     public static boolean booleanÜyeYanlis(){
         return üyeYanlis ; 
     }
-
+    public static boolean booleanÜyeOldu(){
+        return üyeOldu ; 
+    }
     public ArrayList<User> getProfileUser() {
         UserDAO userDAO = new UserDAO();
         User tempUser = userDAO.getUserById(user_id);
@@ -143,11 +318,18 @@ public class UserBean {
         if (user_name == null || user_surname == null || user_mail == null || user_password == null || doc == null || user_date == null) {
             üyeYanlis = true;
             girisYanlis = false;
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Eksik Yerleri doldurunuz!"));
+            sifreOldu = false ; 
+            sifreOlmadi = false ; 
+            üyeOldu = false ; 
             return null;
         }
+        
+         
         girisYanlis = false;
         üyeYanlis = false;
+        üyeOldu = true  ; 
+        sifreOldu = false ; 
+            sifreOlmadi = false ; 
         UserDAO userDAO = new UserDAO();
         userDAO.createUser(user_name, user_surname, user_mail, user_password, doc, user_date);
         user_name = null;
@@ -162,14 +344,22 @@ public class UserBean {
         UserDAO userDAO = new UserDAO();
         User tempUser = userDAO.girisYap(user_main_in, user_password_in);
         if (tempUser == null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Girilen degerlere uygun kayıt bulunamadı!"));
             üyeYanlis = false;
             girisYanlis = true;
+           sifreOldu = false ; 
+            sifreOlmadi = false ; 
+            üyeOldu = false ; 
+            user_main_in = null ; 
+            user_password_in = null ;
             return null;
         } else {
             girisYanlis = false;
             üyeYanlis = false;
+              sifreOldu = false ; 
+            sifreOlmadi = false ; 
+            üyeOldu = false ; 
             user_id = tempUser.getUser_id();
+            sUser_id = user_id ; 
             user_name = tempUser.getUser_name();
             user_surname = tempUser.getUser_surname();
             user_mail = tempUser.getUser_mail();
@@ -183,6 +373,15 @@ public class UserBean {
             return "index";
         }
 
+    }
+    public String actionSifreUnuttum(){
+        üyeYanlis = false;
+        girisYanlis = false;
+        üyeOldu = false ; 
+        sifreOldu = false ; 
+        sifreOlmadi = false ; 
+        sifreUnuttum = true ; 
+        return null ; 
     }
 
     //---------------------------------------

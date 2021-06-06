@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f ="http://java.sun.com/jsf/core"
+      xmlns:p="http://java.sun.com/jsf/passthrough">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
@@ -75,7 +78,10 @@
                                 </div>
                                 <div class="panel-body" style="display: flex;justify-content: space-between">
                                     <h:form class="d-flex" > 
-                                        <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-success btn-block"   value="Profili Düzenle"  style="width: 50vw;"></h:commandButton>
+                                        <h:commandButton  rendered="true" class="btn btn-success btn-block"   value="Profili Düzenle"  style="width: 50vw;"
+                                            onclick="$('#profil-div').modal('show')">
+                                                              <f:ajax render="profil-render"/>
+                                        </h:commandButton>
                                         <h:commandButton action = "#{userBean.cikisYap()}" rendered="true" class="btn btn-danger btn-block"   value="Çıkış Yap"  style="width: 50vw;"></h:commandButton>
                                     </h:form>
                                 </div>
@@ -125,47 +131,66 @@
                                     <div class="tab-pane fade show  active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
 
                                         <div class="row">
+                                            <ui:repeat value="#{userBean.personalTrainerHoca}" var="list">
+                                                <div class="col-md-4">
+                                                    <div class="card profile-card-1">
+                                                        <h:graphicImage library="images" name="#{list.pt_path}" class="background" />
+                                                        <h:graphicImage library="images" name="#{list.pt_path}" class="profile" />
+                                                        <div class="card-content">
+                                                            <h3>#{list.pt_name.toUpperCase()} #{list.pt_surname.toUpperCase()}</h3>
+                                                            <div class="icon-block">
+                                                                <h:commandButton class="btn btn-outline-info"
+                                                                                 onclick="$('#video-modal').modal('show')"
+                                                                                 action="#{userBean.actionForVideo(list)}"
+                                                                                 value="ÖNERİLEN İÇERİK">
+                                                                    <f:ajax render="pt-video-div" />                 
 
-                                            <div class="col-md-4">
-                                                <div class="card profile-card-1">
-                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-sample1" class="background"/>
-                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                                    <div class="card-content">
-                                                        <h3>Savannah Fields</h3>
-                                                        <div class="icon-block">
-                                                            <button class="btn btn-outline-info">ÖNERİLEN İÇERİK</button>
+                                                                </h:commandButton>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </ui:repeat>
+                                            <ui:repeat value="#{userBean.psychologistHoca}" var="list">
+                                                <div class="col-md-4">
+                                                    <div class="card profile-card-1">
+                                                        <h:graphicImage library="images" name="#{list.psych_path}" class="background" />
+                                                        <h:graphicImage library="images" name="#{list.psych_path}" class="profile" />
+                                                        <div class="card-content">
+                                                            <h3>#{list.psych_name.toUpperCase()} #{list.psych_surname.toUpperCase()}</h3>
+                                                            <div class="icon-block">
+                                                                <h:commandButton class="btn btn-outline-info"
+                                                                                 onclick="$('#yazi-modal').modal('show')"
+                                                                                 action="#{userBean.actionForYazi(list)}"
+                                                                                 value="ÖNERİLEN İÇERİK">
+                                                                    <f:ajax render="psych-yazi-div" />                 
 
-                                            <div class="col-md-4">
-                                                <div class="card profile-card-1">
-                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-sample1" class="background"/>
-                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                                    <div class="card-content">
-                                                        <h3>Savannah Fields</h3>
-                                                        <div class="icon-block">
-                                                            <button class="btn btn-outline-info">ÖNERİLEN İÇERİK</button>
+                                                                </h:commandButton>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </ui:repeat>
+                                            <ui:repeat value="#{userBean.nutritionistHoca}" var="list">
+                                                <div class="col-md-4">
+                                                    <div class="card profile-card-1">
+                                                        <h:graphicImage library="images" name="#{list.nut_path}" class="background" />
+                                                        <h:graphicImage library="images" name="#{list.nut_path}" class="profile" />
+                                                        <div class="card-content">
+                                                            <h3>#{list.nut_name.toUpperCase()} #{list.nut_surname.toUpperCase()}</h3>
+                                                            <div class="icon-block">
+                                                                <h:commandButton class="btn btn-outline-info"
+                                                                                 onclick="$('#tarif-modal').modal('show')"
+                                                                                 action="#{userBean.actionForTarif(list)}"
+                                                                                 value="ÖNERİLEN İÇERİK">
+                                                                    <f:ajax render="nut-tarif-div" />                 
 
-
-                                            <div class="col-md-4">
-                                                <div class="card profile-card-1">
-                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-sample1" class="background"/>
-                                                    <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                                    <div class="card-content">
-                                                        <h3>Savannah Fields</h3>
-                                                        <div class="icon-block">
-                                                            <button class="btn btn-outline-info">ÖNERİLEN İÇERİK</button>
+                                                                </h:commandButton>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
+                                            </ui:repeat>
 
 
 
@@ -223,8 +248,100 @@
                 </div> <!-- / .row -->
             </ui:repeat>
         </h:form>
+        <h:form prependId="false" >      
+            <div id="video-modal" class="modal" tabindex="-1" >
+                <div jsf:id="pt-video-div" class="modal-dialog" >
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h5  id="render-header1" class="modal-title">#{userBean.getNameOfVideo()}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" width="600" height="400" >
+                            <p >
+                                <iframe width="450" height="315" src="https://www.youtube.com/embed/#{userBean.getLinkOfVideo()}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <h:commandButton class="btn btn-secondary" p:data-bs-dismiss="modal"
+                                             value="VIDEOYU KAPAT"
+                                             action="profilepage"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>    
+        <h:form prependId="false" >      
+            <div  id="tarif-modal" class="modal" tabindex="-1" >
+                <div jsf:id="nut-tarif-div" class="modal-dialog" >
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h5  class="modal-title">#{userBean.getNameOfTarif()}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" width="600" height="400" >
+                            <p >
+                                <iframe width="450" height="315" src="https://www.nefisyemektarifleri.com/#{userBean.getLinkOfTarif()}" ></iframe>
+
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <h:commandButton class="btn btn-secondary" p:data-bs-dismiss="modal"
+                                             value="TARİFİ KAPAT"
+                                             action="profilepage"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>  
+        <h:form prependId="false" >      
+            <div  id="yazi-modal" class="modal" tabindex="-1" >
+                <div jsf:id="psych-yazi-div" class="modal-dialog" >
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h5  class="modal-title">#{userBean.getNameOfYazi()}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" width="600" height="400" >
+                            <p >
+                                <iframe width="450" height="315" src="https://www.uplifers.com/#{userBean.getLinkOfYazi()}" ></iframe>
+
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <h:commandButton class="btn btn-secondary" p:data-bs-dismiss="modal"
+                                             value="YAZIYI KAPAT"
+                                             action="profilepage"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>  
+        <h:form prependId="false">
+            <div id="profil-div" class="modal" tabindex="-1">
+                <div jsf:id="profil-render" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Modal body text goes here.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </h:body>
 </html>

@@ -5,7 +5,11 @@
  */
 package dao;
 
+import controller.UserBean;
+import entity.NUT_Tarif;
 import entity.Nutritionist;
+import entity.PSYCH_Yazi;
+import entity.PT_Video;
 import entity.PersonalTrainer;
 import entity.Psychologist;
 import util.DBConnection ; 
@@ -111,6 +115,21 @@ public class UserDAO {
         
         
         return null ; 
+    }
+    public void actionSifreDegis(String email,String password){
+        //UPDATE USERS SET USER_PASSWORD = '1234' WHERE USER_MAIL = 'alperenyilmaz@gmail.com'
+        String query = "UPDATE USERS SET USER_PASSWORD = ? WHERE USER_MAIL = ?";
+        try{
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+           preparedStatement.setString(1, password);
+           preparedStatement.setString(2, email);
+           preparedStatement.executeUpdate();
+            UserBean.setSifreOldu(true);
+        }catch(Exception e1){
+            UserBean.setSifreOlmadi(true);
+        }
     }
     
     public ArrayList<Psychologist> getPsychologistByUser_Id(int user_id){
@@ -307,6 +326,72 @@ public class UserDAO {
     
     
     //-------------------------------------
+    
+    public PT_Video getRandomVideo(int pt_id){
+        String query = "SELECT * FROM PT_VIDEOS WHERE PT_ID =  "+pt_id ;
+        try{
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            ArrayList<PT_Video> tempArrayList = new ArrayList<>();
+            while(resultSet.next()){
+                tempArrayList.add(new PT_Video(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3),resultSet.getString(4)));
+            }
+            int size = tempArrayList.size();
+            java.util.Random rand = new java.util.Random();
+            int index = rand.nextInt(size);
+            return tempArrayList.get(index);
+            
+        }catch(Exception e1){
+            
+        }
+        return null ; 
+    }
+    
+    public NUT_Tarif getRandomTarif(int nut_id){
+        String query = "SELECT * FROM TARIFLER WHERE NUT_ID = " +nut_id ; 
+        try{
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            ArrayList<NUT_Tarif> tempArrayList = new ArrayList<>();
+            while(resultSet.next()){
+                tempArrayList.add(new NUT_Tarif(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3),resultSet.getString(4)));
+            }
+            int size = tempArrayList.size();
+            java.util.Random rand = new java.util.Random();
+            int index = rand.nextInt(size);
+            return tempArrayList.get(index);
+        }catch(Exception e1){
+            
+        }
+        return null ; 
+    }
+    
+    public PSYCH_Yazi getRandomYazi(int psych_id){
+        String query = "SELECT * FROM YAZILAR WHERE PSYCH_ID = " + psych_id ; 
+        try{
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            
+            ArrayList<PSYCH_Yazi> tempArrayList = new ArrayList<>();
+            while(resultSet.next()){
+                tempArrayList.add(new PSYCH_Yazi(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3),resultSet.getString(4)));
+            }
+            int size = tempArrayList.size();
+            java.util.Random rand = new java.util.Random();
+            int index = rand.nextInt(size);
+            return tempArrayList.get(index);
+            
+        }catch(Exception e1){
+            
+        }
+        return null ; 
+    }
     
 
     public Connection getConnection() {

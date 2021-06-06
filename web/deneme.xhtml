@@ -62,7 +62,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class="container1">
             <div class="forms-container">
 
@@ -88,6 +88,10 @@
                         <h:commandButton class="btn solid"
                                          action="#{userBean.actionSignIn()}"
                                          value="Giris Yap"/>
+                        
+                        <h:commandLink value="Sifremi unuttum." 
+                                       action="#{userBean.actionSifreUnuttum()}"/>
+                        
                     </h:form>
                     <h:form  enctype="multipart/form-data"
                              prependId="false" id="form-2" class="sign-up-form" style="display: flex;align-items: center;">
@@ -165,6 +169,7 @@
                         <button class="btn transparent" id="sign-in-btn">
                             Giriş Yap
                         </button>
+                        
                     </div>
                 </div>
             </div>
@@ -175,35 +180,67 @@
                     <div class="modal-header">
                         <h5 class="modal-title">
                             <h:outputText rendered="#{userBean.booleanGirisYanlis()}"
-                                         value="Giris Yaparken hata meydana geldi"/> 
+                                          value="Giris Yaparken hata meydana geldi"/> 
                             <h:outputText rendered="#{userBean.booleanÜyeYanlis()}"
                                           value="Uye olurken hata meydana geldi"/> 
-                            <h:outputText rendered="#{!(userBean.booleanGirisYanlis()) and !(userBean.booleanÜyeYanlis())}"
+                            <h:outputText rendered="#{userBean.booleanÜyeOldu()}"
+                                          value="Üye Olma İsleminiz Basarilidir. "/>
+                            <h:outputText rendered="#{userBean.getSifreUnuttum()}"
+                                          value="Sifre Degis"/>
+                            <h:outputText rendered="#{userBean.isSifreOldu()}"
+                                          value="Sifre degisimi basarili."/>
+                            <h:outputText rendered="#{userBean.isSifreOlmadi()}"
+                                          value="Sifre degisimi basarili."/>
+                            <h:outputText rendered="#{!(userBean.isSifreOldu())and!(userBean.isSifreOlmadi())and!(userBean.getSifreUnuttum()) and!(userBean.booleanGirisYanlis()) and !(userBean.booleanÜyeYanlis())and !(userBean.booleanÜyeOldu())}"
                                           value="Merhaba :)"/>
-                            
+
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <p><h:outputText rendered="#{userBean.booleanGirisYanlis()}"
-                                         value="Girilen degerlere uygun record yoktur."/> 
-                            <h:outputText rendered="#{userBean.booleanÜyeYanlis()}"
-                                          value="Lütfen tüm alanlari eksizsik doldurunuz."/> 
-                            <h:outputText rendered="#{!(userBean.booleanGirisYanlis()) and !(userBean.booleanÜyeYanlis())}"
-                                          value="Hos Geldiniz. İlk defa giriyorsanız üye olmayı mevcut hesabınız varsa giris yapmayı unutmayınız"/> 
-                        </p>
-                    </div>
+                    <h:form prependId="false" id="sifre-unuttun-form">
+                        <div class="modal-body">
+                            <p>
+                                <h:outputText rendered="#{userBean.booleanGirisYanlis()}"
+                                               value="Şifrenizi unutmuş olabilirsiniz! " 
+                                               />
+                                <h:outputText rendered="#{userBean.booleanÜyeYanlis()}"
+                                              value="Lütfen tüm alanlari eksizsik doldurunuz."/> 
+                                <h:outputText rendered="#{userBean.booleanÜyeOldu()}"
+                                              value="Giris Yapmayı unutmayınız."/>
+                                <h:panelGroup rendered="#{userBean.getSifreUnuttum()}" >
+                                    <h:inputText id="sign-reset-email" p:type="email" class="input"
+                                         value="#{userBean.user_mail_reset}"
+                                         p:placeholder="E-mail"
+                                         requiredMessage="Lütfen e-mail adresinizi giriniz"/>
+                                    <h:inputText id="sign-reset-pass" p:type="password" class="input" p:data-type="password"
+                                         value="#{userBean.user_password_reset}"
+                                         p:placeholder="Yeni Sifre"
+                                         requiredMessage="Lütfen şifrenizi giriniz"/>
+                                    <h:commandButton value="sifre degis" 
+                                                     action="#{userBean.actionSifreDegis()}"/>
+                                    
+                                </h:panelGroup>
+                                <h:outputText rendered="#{userBean.isSifreOldu()}"
+                                          value="Tebrikler Yeni Sifrenizle Girmeyi Unutmayiniz."/>
+                            <h:outputText rendered="#{userBean.isSifreOlmadi()}"
+                                          value=" Maalesef hatali mail adresi."/>
+                                <h:outputText rendered="#{!(userBean.isSifreOldu())and!(userBean.isSifreOlmadi())and!(userBean.getSifreUnuttum()) and!(userBean.booleanGirisYanlis()) and !(userBean.booleanÜyeYanlis())and !(userBean.booleanÜyeOldu())}"
+                                              value="Hos Geldiniz. İlk defa giriyorsanız üye olmayı mevcut hesabınız varsa giris yapmayı unutmayınız"/> 
+                            </p>
+                        </div>
+                    </h:form>
                     <div class="modal-footer">
-                        
+
                     </div>
                 </div>
             </div>
         </div>
+ 
 
 
 
 
-      
+
         <script>
             const visibilityToggle = document.querySelector(".visibility");
             const input = document.querySelector(".input-passwd input");
@@ -233,7 +270,7 @@
             });
 
         </script>
-         
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>

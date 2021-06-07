@@ -40,6 +40,52 @@ public class UserBean {
     private String password_reset ; 
     private ArrayList<Yorum> yorumArrayList ; 
     private boolean likeBastin ; 
+    private int char_counter ; 
+    private  static Yorum staticYorum ; 
+    public String tempYorum ; 
+
+    public String ayarlaStaticYorum(Yorum tempYorum){
+        staticYorum = tempYorum ; 
+        return null ; 
+    }
+    
+    public String getTempYorum() {
+        if(staticYorum == null){
+            
+        }
+        else{
+            tempYorum = staticYorum.getYorum_content();
+        }
+        return tempYorum;
+    }
+
+    public void setTempYorum(String tempYorum) {
+        this.tempYorum = tempYorum;
+    }
+
+    public int getChar_counter() {
+        if(staticYorum == null){
+            char_counter = 400 ; 
+            return char_counter ; 
+        }
+        else if(staticYorum.getYorum_content() == null){
+            return 400 ; 
+        }
+        else{
+            return 400-(staticYorum.getYorum_content().length());
+        }
+        
+    
+    }
+    public String düzenleYorumu(){
+        UserDAO userDAO = new UserDAO();
+        userDAO.düzenleYorum(tempYorum,staticYorum.getYorum_id());
+        return null;
+    }
+
+    public void setChar_counter(int char_counter) {
+        this.char_counter = char_counter;
+    }
 
     public boolean likeBastinMi(Yorum tempYorum) {
         UserDAO userDAO = new UserDAO();

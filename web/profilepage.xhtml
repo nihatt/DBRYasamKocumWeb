@@ -213,9 +213,13 @@
                                                         </div>
 
                                                         <div jsf:id="render-button" style="display: flex;justify-content: flex-end">
-                                                            <h:commandButton action = "login?faces-redirect=true"
-                                                                             rendered="true" class="btn btn-warning"   value="Düzenle"  
-                                                                             style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
+                                                            <h:commandButton
+                                                                onclick="$('#yorum-düzenle-div').modal('show')"
+                                                                action="#{userBean.ayarlaStaticYorum(list)}"
+                                                                rendered="true" class="btn btn-warning"   value="Düzenle"  
+                                                                style="margin-left: 5px;margin-top: 10px;align-items: flex-end">
+                                                                    <f:ajax render="render-yorum-düzenle-div"/>
+                                                            </h:commandButton>
 
                                                             <h:commandButton 
                                                                 rendered="true" class="btn btn-danger"   value="Sil"  
@@ -381,6 +385,36 @@
                     </div>
                 </div>
             </div>
+        </h:form>
+        <h:form prependId="false"  >
+            <div id="yorum-düzenle-div" class="modal" tabindex="-1">
+                <div jsf:id="render-yorum-düzenle-div" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Mesaj İçeriğini Düzenle</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <h:inputTextarea value="#{userBean.tempYorum}"
+                                                 rows="3" style="height: 169px;min-width: 30vw;margin-top: 15px" 
+                                                 p:maxlength="400" >
+                                   
+                                </h:inputTextarea>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Iptal Et</button>
+                            <h:commandButton  value="Yorumu Düzenle" class="btn btn-primary"
+                                              action="#{userBean.düzenleYorumu()}">
+                                
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </h:form>
 
 

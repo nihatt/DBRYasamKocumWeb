@@ -101,7 +101,17 @@ public class UserDAO {
         }
         return 0;
     }
-
+    public void düzenleYorum(String yeniYorum,int yorum_id){
+        String query = "UPDATE YORUMLAR SET YORUM_CONTENT = ' "+ yeniYorum+" ' WHERE YORUM_ID = "+yorum_id ; 
+        try{
+            dbConnection = new DBConnection();
+            connection = dbConnection.createConnection();
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        }catch(Exception e1){
+            
+        }
+    }
     public void likeBas(int user_id, int yorum_id) {
         String query = "INSERT INTO LIKES VALUES (?,?)";
         try {

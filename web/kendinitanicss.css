@@ -1,0 +1,50 @@
+@media (max-width:768px){
+    .body{
+        width: 100vh;
+        padding: 0 !important;
+        margin: 0  !important
+    }
+    .ilkanket{
+        width: 100%;
+    }
+    .secim1{
+        width: 100%;
+    }
+    .secim1 option{
+        width: 100%;
+    }
+
+    .img-fluid{
+        display: flex;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0;
+
+    }
+
+    .paneldegis{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .buttondegis{
+        margin-left : 30% !important;
+    }
+    .resimdegis{
+        margin-left: 0 !important;
+
+    }
+
+    .ilkanket , .ikincianket , .ucuncuanket{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .ilbox,ikincibox,.ucuncubox{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .asd{
+        color:red;
+    }
+}

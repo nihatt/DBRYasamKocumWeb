@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="kendinitanicss.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=KoHo"/></link>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bebas+Neue"/>
+        <script src="https://kit.fontawesome.com/018c1f74d5.js" crossorigin="anonymous"></script>
+        <title>KENDİNİ TANI</title>
+        
+        
+        
+        <style>
+            .elemanlar{
+                margin-bottom: 10px;
+                margin-top: 10px;
+            }
+            .container{               
+                background: rgba(163, 201, 168, 1.0);
+            }
+        </style>
+        
+        
+    </h:head>
+    <body style="width: 100%;">
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="padding-bottom: 20px;padding-top: 20px" >
+            <div class="container-fluid" >
+                <i class="fas fa-child" style="padding: 5px"></i>
+                <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/dbrsyasamkoc/faces/index.xhtml">Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/yorumlar.xhtml">Yorumlar</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hizmetlerimiz
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
+
+                                <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                        </li>
+                    </ul>
+                    <h:form class="d-flex">
+
+                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
+                                          action="#{userBean.cikisYap()}"></h:commandButton>
+
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+            
+        
+        
+        
+        <div class="container ilkanket p-5 my-5 col-sm-12 col-md-9 text-black">
+            <div class="ilkbox p-3 my-3 text-black" style="background-color:rgb(105, 162, 151); border:7px solid #50808E; color: black; ">
+                <h3><b>Günlük Kalori İhtiyacınızı Öğrenmek İster Misiniz?</b></h3>
+                <p>Yaklaşık bir dakikanı alacak bu test ile günlük kalori ihtiyacını hesaplayalım.</p>
+            </div>
+
+            <h:form>                 
+                <h:panelGrid class="elemanlar" columns="2">
+                    <h:outputText style="margin-right: 56px;" value="Cinsiyet:"/>
+                    <h:panelGrid columns="2">
+                        <h:outputText style="margin-right: 10px;" value="Kadın"/>
+                        <h:selectBooleanCheckbox value="#{kalori.cinsiyetK}"/>                  
+                        <h:outputText style="margin-right: 10px;" value="Erkek"/>
+                        <h:selectBooleanCheckbox value="#{kalori.cinsiyetE}"/> 
+                    </h:panelGrid>
+                    <h:outputText style="margin-right: 60px; font-size: 10px;" value=""/>
+                    <h:outputText style="margin-right: 60px; font-size: 12px;" value="(Lütfen 1 tane seçiniz.)"/>
+                </h:panelGrid>
+                <h:panelGrid class="elemanlar" columns="2">
+                    <h:outputText style="margin-right: 10px; max-width: 350px;" value="Çalışma Biçimi:"/>
+                    <h:selectOneMenu class="secim1" value="#{kalori.calismaBicimi}">
+                        <div style="width: auto;">
+                        <f:selectItem  itemLabel="Masa başı bir işte çalışıyorum, fazla hareket etmiyorum" itemValue="1"/>
+                        <f:selectItem  itemLabel="Az hareket ettiğim bir iş yapıyorum, hafif egzersizler yapıyorum" itemValue="2"/>
+                        <f:selectItem itemLabel="Orta derecede hareket gerektiren bir iş yapıyorum" itemValue="3"/>
+                        <f:selectItem itemLabel="Çok aktif olduğum bir iş yapıyorum, haftada 5 gün spor yapıyorum" itemValue="4"/>
+                        <f:selectItem itemLabel="Aşırı düzeyde spor yapıyorum, spor müsabakasına hazırlanıyorum" itemValue="5"/>
+                        </div>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:panelGrid class="elemanlar" columns="2">
+                    <h:outputText style="margin-right: 95px;" value="Yaş:"/>
+                    <h:inputText value="#{kalori.yas}"/> 
+                </h:panelGrid>
+                <h:panelGrid class="elemanlar" columns="2">
+                    <h:outputText style="margin-right: 92px;" value="Boy:"/>
+                    <h:inputText value="#{kalori.boy}"/>
+                </h:panelGrid>
+                <h:panelGrid class="elemanlar" columns="2">
+                    <h:outputText style="margin-right: 92px;" value="Kilo:"/>
+                    <h:inputText value="#{kalori.kilo}"/>
+                </h:panelGrid>        
+                <h:commandButton action="#{kalori.sonuclar()}" styleClass="elemanlar" style="margin-left: 45%; padding: 5px 15px; border-radius: 4px;" value="Gönder"/>       
+
+                <div class="card" style="background-color: #A3C9A8; border:0px;">                   
+                    <div class="card-body">
+                        <span style="margin-left: 35%;">
+                            <i class="w3-xlarge fa fa-arrow-down"></i>
+                            <h:outputText style="font-size:100%; margin-left: 15px; margin-right: 10px;" value="Hesaplama sonuçları aşağıdadır."/>
+                            <i class="w3-xlarge fa fa-arrow-down"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <h:panelGrid class="elemanlar" columns="3">
+
+                    <h:outputText rendered="#{kalori.sonuclarOnay}" value="Kalori İhtiyacı:"/>
+                    <h:outputText style="margin-left:10px;" value="#{kalori.kaloriIhtiyac}"/>
+                    <h:outputText style="margin-left:10px;" rendered="#{kalori.sonuclarOnay}" value="kcal/gün"/>
+
+                    <h:outputText rendered="#{kalori.sonuclarOnay}" value="Vücut Yüzey Alanı:"/>
+                    <h:outputText style="margin-left:10px;" value="#{kalori.vucutYuzey}"/>
+                    <h:outputText style="margin-left:10px;" rendered="#{kalori.sonuclarOnay}" value="metrekare"/>
+
+                    <h:outputText rendered="#{kalori.sonuclarOnay}" value="Yağsız Vücut Ağırlığı:"/>
+                    <h:outputText style="margin-left:10px;" value="#{kalori.yagsizVucut}"/>
+                    <h:outputText style="margin-left:10px;" rendered="#{kalori.sonuclarOnay}" value="kg"/>
+
+                    <h:outputText rendered="#{kalori.sonuclarOnay}" value="İdeal Kilo:"/>
+                    <h:outputText style="margin-left:10px;" value="#{kalori.idealKilo}"/>
+                    <h:outputText style="margin-left:10px;" rendered="#{kalori.sonuclarOnay}" value="kg"/>
+
+                    <h:outputText rendered="#{kalori.sonuclarOnay}" value="Bazal Metabolizma Hızı:"/>
+                    <h:outputText style="margin-left:10px;" value="#{kalori.bmi}"/>
+                    <h:outputText style="margin-left:10px;" rendered="#{kalori.sonuclarOnay}" value="kcal"/>
+
+                    <h:outputText rendered="#{kalori.sonuclarOnay}" value="Vücut Kitle İndeksi(BMI):"/>
+                    <h:outputText style="margin-left:10px;" value="#{kalori.vucutKitle}"/>
+                    <h:outputText style="margin-left:10px;" rendered="#{kalori.sonuclarOnay}" value="kg/metrekare"/>
+
+
+                </h:panelGrid>
+            </h:form>
+        </div>
+
+        <div class="container ikincianket p-5 my-5 text-black">
+            <div class="ikincibox p-3 my-3 text-black" style="background-color:rgb(105, 162, 151); border:7px solid #50808E; color: black; ">
+                <h3><b>Bu tek soruluk kişilik testiyle içinizdeki bastırılmış duyguları ortaya çıkaralım.</b></h3>
+                <p>20. yüzyılda Macar psikiyatrist Léopold Szondi, bir kişinin içinde yatan bilinçsiz düşünceleri,
+                    arzular ve dürtüleri ortaya çıkarmak amacıyla tek soruluk bir test geliştirdi.</p>
+            </div>
+
+            <h:form>                 
+                <h:panelGrid style="margin-bottom: 40px; margin-top: 40px;">                   
+                    <h:graphicImage class="img-fluid" style="display: block; margin-left: 30%; margin-right: 30%;"
+                                    value="https://img-s2.onedio.com/id-5fb029a81b176e5068bcbb47/rev-0/w-635/f-jpg-webp/s-29d8c060191896072c4d0b4cf094773642941b19.webp">                       
+                    </h:graphicImage>
+                </h:panelGrid>
+                <h:panelGrid style="margin-bottom: 20px; margin-top: 20px;">
+                    <h:outputText style="margin-right: 10px; font-size: 20px;" 
+                                  value="Issız bir ormandasınız.
+                                  Etrafta kimsecikler yok. Yürürken karşınıza bu fotoğraftaki kişilerden biri çıkıyor.
+                                  Hangisini görseniz daha çok korkarsınız?"/>
+                </h:panelGrid>
+                <h:panelGrid class="paneldegis" style="margin-bottom: 10px; margin-top: 20px; margin-left: 40%; margin-right: 35%; display: block;" columns="1">                    
+                    <h:inputText value="#{kalori.kisilikSayisi}"/> 
+                    <h:outputText style="margin-left: 15px; font-size: 10px;" value="(Lütfen 1,2,3,4.. şeklinde yazınız.)"/>
+                </h:panelGrid>       
+                <h:commandButton action="#{kalori.kisilikSonucu()}" styleClass="elemanlar buttondegis" style="margin-left: 45%; padding: 5px 15px; border-radius: 4px;" value="Gönder"/>       
+
+                <div class="card" style="background-color: #A3C9A8; border:0px;">                   
+                    <div class="card-body">
+                        <span style="margin-left: 35%;">
+                            <i class="w3-xlarge fa fa-arrow-down"></i>
+                            <h:outputText style="font-size:100%; margin-left: 15px; margin-right: 10px;" value="Testinizin sonucu aşağıdadır."/>
+                            <i class="w3-xlarge fa fa-arrow-down"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <h:panelGrid class="elemanlar" columns="1">
+
+                    <h:outputText rendered="#{kalori.kisilikOnay}" style="font-size:30px; font-weight: bold;" value="İçinizdeki Bastırılmış Duygu:"/>
+                    <h:outputText style="font-size:20px; font-weight: bold;" value="#{kalori.kisilikBaslik}"/>
+                    <h:outputText style="font-size:20px;" value="#{kalori.kisilikMetin}"/>
+
+                </h:panelGrid>
+
+
+            </h:form>
+        </div>
+
+        <div class="container ucuncuanket p-5 my-5 text-black">
+            <div class="ucuncubox p-3 my-3 text-black" style="background-color:rgb(105, 162, 151); border:7px solid #50808E; color: black; ">
+                <h3><b>Bu tek soruluk kariyer testiyle hangi işe uygun olduğunuz hakkında fikir sahibi olun.</b></h3>
+            </div>
+
+            <h:form>                 
+                <h:panelGrid style="margin-bottom: 40px; margin-top: 40px;">                   
+                    <h:graphicImage class="resimdegis" style="display: block; margin-left: 120%; margin-right: auto;"
+                                    value="http://www.benoyum.com/wp-content//kariyer.png">                       
+                    </h:graphicImage>
+                </h:panelGrid>
+                <h:panelGrid style="margin-bottom: 20px; margin-top: 20px;">
+                    <h:outputText style="margin-right: 10px; font-size: 20px;" 
+                                  value="Kedinin biri ağaca çıkmış inmek bilmiyor. Kediyi o ağaçtan indirmek için ne yaparsınız?"/>
+                </h:panelGrid>
+                <h:panelGrid style="margin-left :35%;" columns="2">                       
+                    <h:selectBooleanCheckbox style="margin-left: 30px;" value="#{kalori.secenekA}"/> 
+                    <h:outputText value="Ağaca tırmanırsınız."/>
+
+                    <h:selectBooleanCheckbox style="margin-left: 30px;" value="#{kalori.secenekB}"/> 
+                    <h:outputText value="Ağaca merdiven dayayıp tırmanırsınız."/>
+
+                    <h:selectBooleanCheckbox style="margin-left: 30px;" value="#{kalori.secenekC}"/> 
+                    <h:outputText value="Gel pisi pisi diye seslenirsiniz."/>
+
+                    <h:selectBooleanCheckbox style="margin-left: 30px;" value="#{kalori.secenekD}"/> 
+                    <h:outputText value="Dişi bir kedi bulup ağacın altına getirirsiniz."/>
+
+                    <h:selectBooleanCheckbox style="margin-left: 30px;" value="#{kalori.secenekE}"/> 
+                    <h:outputText value="İtfaiye gibi kurtarıcı görevlileri ararsınız."/>
+
+                    <h:outputText style="margin-left: 60px; font-size: 10px;" value=""/>
+                    <h:outputText style="margin-left: 18px; font-size: 12px;" value="(Lütfen 1 tane seçiniz.)"/>
+                </h:panelGrid>       
+
+                <h:commandButton action="#{kalori.kariyerSonucu()}" style="margin-left: 45%; padding: 5px 15px; border-radius: 4px; margin-bottom: 20px; margin-top: 30px;" value="Gönder"/>       
+
+                <div class="card" style="background-color: #A3C9A8; border:0px;">                   
+                    <div class="card-body">
+                        <span style="margin-left: 35%;">
+                            <i class="w3-xlarge fa fa-arrow-down"></i>
+                            <h:outputText style="font-size:100%; margin-left: 15px; margin-right: 10px;" value="Testinizin sonucu aşağıdadır."/>
+                            <i class="w3-xlarge fa fa-arrow-down"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <h:panelGrid class="elemanlar" columns="1">                    
+                    <h:outputText rendered="#{kalori.kariyerOnay}" style="font-size:20px; font-weight: normal;" value="#{kalori.kariyerMesaj}"/>                    
+                </h:panelGrid>
+
+
+            </h:form>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    </body>
+</html>

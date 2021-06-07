@@ -72,9 +72,9 @@ and open the template in the editor.
                         <label for="exampleFormControlTextarea1">Siz ne düşünüyorsunuz ? </label>
                         <h:inputTextarea id="exampleFormControlTextarea1" rows="3" style="min-width: 40vw;margin-top: 15px" disabled="true" p:maxlength="400" class="form-control" rendered="#{!(userBean.loggedIn)}" value="Lütfen Once Giriş yapınız veya üye olunuz" />
                         <h:inputTextarea  p:placeholder="Fikirlerinizin Bizim İçin Çok Önemli Olduğunu Unutmayınız."
-                                         value="#{yorumBean.typeComment}"
-                                         id="exampleFormControlTextarea2" rows="3" style="height: 169px;min-width: 40vw;margin-top: 15px"  
-                                         p:maxlength="400" class="form-control" rendered="#{(userBean.loggedIn)}">
+                                          value="#{yorumBean.typeComment}"
+                                          id="exampleFormControlTextarea2" rows="3" style="height: 169px;min-width: 40vw;margin-top: 15px"  
+                                          p:maxlength="400" class="form-control" rendered="#{(userBean.loggedIn)}">
                             <f:ajax render="char-counter" event="keyup"/>
                         </h:inputTextarea>
                         <h:inputText  rendered="#{userBean.loggedIn}" id="char-counter" style="width: 50px" disabled="true" value="#{yorumBean.char_counter}"/>
@@ -83,15 +83,15 @@ and open the template in the editor.
                         <h:commandButton rendered="#{userBean.loggedIn}" value="Gönder !" 
                                          class="btn btn-success" style="margin-top: 10px;float: right"
                                          action="#{yorumBean.actionGonder()}">
-                            
+
                         </h:commandButton>
                     </h:form>
                 </div><!-- comment -->
             </div>
 
-            <div class="col-md-8 yorum">
+            <div jsf:id="render-div" class="col-md-8 yorum">
                 <ui:repeat value="#{yorumBean.yorumArrayList}" var="list">
-                    <div jsf:id="render-div" class="media g-mb-30 media-comment">
+                    <div  class="media g-mb-30 media-comment">
 
                         <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
                             <div class="g-mb-15" style='display: flex;flex-direction: row'>
@@ -110,21 +110,24 @@ and open the template in the editor.
                             </p>
 
                             <ul class="list-inline d-sm-flex my-0">
-                                <li class="list-inline-item g-mr-20">
-                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
-                                        178
-                                    </a>
-                                </li>
-                                <li class="list-inline-item g-mr-20">
-                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
-                                        34
-                                    </a>
-                                </li>
-                                <li class="list-inline-item ml-auto">
+                                <h:form prependId="false" id="likeButton">
+                                    <h:commandLink rendered="#{!(userBean.loggedIn) }" action="deneme"> 
+                                        <h:graphicImage library="images" name="icons/love.png"/> 
+                                    </h:commandLink>
 
-                                </li>
+                                    <h:commandLink rendered="#{(userBean.loggedIn)and !(userBean.likeBastinMi(list))}"
+                                                   action="#{userBean.likeButtonActive(list)}"> 
+                                        <h:graphicImage library="images" name="icons/love.png"/> 
+                                        <f:ajax render="render-div"/>
+                                    </h:commandLink>
+                                    <h:commandLink rendered="#{(userBean.loggedIn)and (userBean.likeBastinMi(list))}"
+                                                   action="#{userBean.likeButtonDeactive(list)}"> 
+                                        <h:graphicImage library="images" name="icons/love2.png"/> 
+                                        <f:ajax render="render-div"/>
+                                    </h:commandLink>
+
+                                    <h:outputText style="white-space: pre;" value="  #{userBean.getCommentLike(list)}"/>
+                                </h:form>
                             </ul>
                         </div>
                     </div>

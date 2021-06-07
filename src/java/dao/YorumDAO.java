@@ -38,6 +38,38 @@ public class YorumDAO {
         }
         return null ; 
     }
+    public ArrayList<Yorum> getYorumlarById(int user_id){
+        String query = "SELECT * FROM YORUMLAR  WHERE USER_ID = "+user_id +" ORDER BY YORUM_ID DESC " ; 
+        try{
+        dbConnection = new DBConnection();
+        connection  = dbConnection.createConnection();
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(query) ; 
+        yorumArrayList = new ArrayList<>();
+        while(resultSet.next()){
+            yorumArrayList.add(new Yorum(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3)))  ; 
+        }
+        return yorumArrayList ; 
+        
+        }catch(Exception e1){
+            
+        }
+        return null ;
+    }
+    
+    public void yorumuSil(int yorum_id){
+        String query = "DELETE FROM YORUMLAR WHERE YORUM_ID = " + yorum_id  ; // DELETE FROM YORUMLAR WHERE YORUM_ID = 3 
+        try{
+            dbConnection = new DBConnection();
+            connection  = dbConnection.createConnection();
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        
+        }catch(Exception e1){
+            
+        }
+    }
+   
     public String getNameOfUser(int yorum_id){
         String query = "SELECT USER_NAME,USER_SURNAME FROM USERS INNER JOIN YORUMLAR ON USERS.USER_ID = YORUMLAR.USER_ID WHERE YORUMLAR.YORUM_ID =  " + yorum_id ; 
         try{

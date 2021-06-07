@@ -26,6 +26,7 @@ public class Yorum {
     public Yorum(){
         
     }
+   
 
     public String getUser_name() {
         YorumDAO yorumDAO = new YorumDAO();

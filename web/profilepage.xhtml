@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:f ="http://java.sun.com/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
@@ -199,40 +199,34 @@
 
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <div class="card-body">
-                                            <article class="comment" >
-                                                <a class="comment-img" href="#non">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="50" height="50"></img>
-                                                </a>
-                                                <div class="comment-body">
-                                                    <div class="text">
-                                                        <p>This is a much longer one that will go on for a few lines.</p>
-                                                        <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
-                                                    </div>
-                                                    <h:form>
-                                                        <div style="display: flex;justify-content: flex-end">
-                                                            <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-warning"   value="Düzenle"  style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
-                                                        </div>
-                                                    </h:form>
-                                                </div>
-                                            </article>
+                                            <ui:repeat value="#{userBean.yorumArrayList}" var="list" varStatus="status">
+                                                <article class="comment" >
+                                                    <a class="comment-img" href="#non">
+                                                        <h:graphicImage width="50" height="50" 
+                                                                        library="images"
+                                                                        name="USERS/#{list.getUser_image()}"/>
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="text">
+                                                            <h:outputText rendered="true" value="#{list.yorum_content}"/>
 
-                                            <article class="comment" >
-                                                <a class="comment-img" href="#non">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="50" height="50"></img>
-                                                </a>
-                                                <div class="comment-body">
-                                                    <div class="text">
-                                                        <p>This is a much longer one that will go on for a few lines.</p>
-                                                        <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
-                                                    </div>
-                                                    <h:form>
-                                                        <div style="display: flex;justify-content: flex-end">
-                                                            <h:commandButton action = "login?faces-redirect=true" rendered="true" class="btn btn-warning"   value="Düzenle"  style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
                                                         </div>
-                                                    </h:form>
-                                                </div>
-                                            </article>
 
+                                                        <div jsf:id="render-button" style="display: flex;justify-content: flex-end">
+                                                            <h:commandButton action = "login?faces-redirect=true"
+                                                                             rendered="true" class="btn btn-warning"   value="Düzenle"  
+                                                                             style="margin-left: 5px;margin-top: 10px;align-items: flex-end"></h:commandButton>
+
+                                                            <h:commandButton 
+                                                                rendered="true" class="btn btn-danger"   value="Sil"  
+                                                                style="margin-left: 5px;margin-top: 10px;align-items: flex-end"
+                                                                action = "#{userBean.actionYorumuSil(list)}" />
+
+                                                        </div>
+
+                                                    </div>
+                                                </article>
+                                            </ui:repeat>
                                         </div>
 
 
@@ -370,19 +364,19 @@
                                 <h:panelGroup  >
                                     <h:outputText value="Yeni Sifrenizi Giriniz."/>
                                     <h:inputText id="sign-reset-pass" p:type="password" class="input" p:data-type="password"
-                                         value="#{userBean.password_reset}"
-                                         p:placeholder="Yeni Sifre"
-                                         requiredMessage="Lütfen şifrenizi giriniz"/>
+                                                 value="#{userBean.password_reset}"
+                                                 p:placeholder="Yeni Sifre"
+                                                 requiredMessage="Lütfen şifrenizi giriniz"/>
                                     <h:commandButton value="sifre degis" 
                                                      action="#{userBean.actionSifreReset()}"/>
                                     <br/>
                                     <h:graphicImage library="images" name="/icons/lock.png" />
-                                    
+
                                 </h:panelGroup>
                             </p>
                         </div>
                         <div class="modal-footer">
-                            
+
                         </div>
                     </div>
                 </div>

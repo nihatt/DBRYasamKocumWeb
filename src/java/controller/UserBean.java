@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import entity.User;
 import dao.UserDAO;
+import dao.YorumDAO;
 import entity.NUT_Tarif;
 import entity.Nutritionist;
 import entity.PSYCH_Yazi;
@@ -16,6 +17,7 @@ import entity.PersonalTrainer;
 import entity.Psychologist;
 import java.util.ArrayList;
 import entity.PT_Video;
+import entity.Yorum;
 import javax.servlet.http.Part;
 
 /**
@@ -36,7 +38,27 @@ public class UserBean {
     private String user_mail_reset ;
     private String user_password_reset ; 
     private String password_reset ; 
+    private ArrayList<Yorum> yorumArrayList ; 
+    private boolean likeBastin ; 
 
+    public boolean likeBastinMi(Yorum tempYorum) {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.kullaniciLikeAtmismi(user_id,tempYorum.getYorum_id());
+    }
+
+    public void setLikeBastin(boolean likeBastin) {
+        this.likeBastin = likeBastin;
+    }
+
+    public ArrayList<Yorum> getYorumArrayList() {
+        YorumDAO yorumDAO = new YorumDAO();
+        yorumArrayList =  yorumDAO.getYorumlarById(user_id);
+        return yorumArrayList;
+    }
+
+    public void setYorumArrayList(ArrayList<Yorum> yorumArrayList) {
+        this.yorumArrayList = yorumArrayList;
+    }
     public String getPassword_reset() {
         return password_reset;
     }
@@ -115,6 +137,15 @@ public class UserBean {
         }
          userDAO.actionSifreDegis(user_mail, password_reset);
          return null ; 
+    }
+    
+    public String actionYorumuSil(Yorum tempYorum){
+        YorumDAO yorumDAO = new YorumDAO();
+        yorumDAO.yorumuSil(tempYorum.getYorum_id());
+        return null ; 
+    }
+    public String deneme(){
+        return "index" ; 
     }
     private static int sUser_id ; 
     
@@ -431,7 +462,22 @@ public class UserBean {
         loggedIn = false;
         return "index";
     }
-
+    
+    public int getCommentLike(Yorum tempYorum){
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getYorumLike(tempYorum.getYorum_id());
+    }
+    public String likeButtonActive(Yorum tempYorum){
+        UserDAO userDAO = new UserDAO();
+        userDAO.likeBas( user_id, tempYorum.getYorum_id());
+        return null ; 
+    }
+    public String likeButtonDeactive(Yorum tempYorum){
+        UserDAO userDAO = new UserDAO();
+        userDAO.likeGeriAl( user_id, tempYorum.getYorum_id());
+        return null ; 
+    }
+    
     //----------------
     public boolean isLoggedIn() {
         return loggedIn;

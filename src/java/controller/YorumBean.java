@@ -48,6 +48,7 @@ public class YorumBean {
         typeComment = null ; 
         return "yorumlar" ; 
     }
+ 
 
     public void setChar_counter(int char_counter) {
         this.char_counter = char_counter;

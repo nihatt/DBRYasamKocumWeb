@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\YILMAZ\Documents\NetBeansProjects\dbrsyasamkoc
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Jun 07 18:56:57 EEST 2021: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Jun 07 18:56:57 EEST 2021:
+Shutting down instance a816c00e-0179-e600-a186-fffff401b046 on database directory C:\Users\YILMAZ\Documents\NetBeansProjects\dbrsyasamkoc\DBRdb with class loader sun.misc.Launcher$AppClassLoader@6f94fa3e 
+----------------------------------------------------------------

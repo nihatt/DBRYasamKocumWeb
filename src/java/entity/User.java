@@ -33,6 +33,11 @@ public class User {
         this.nut_id = nut_id;
         this.psych_id = psych_id;
     }
+    public User(String user_name ,String user_surname, String user_path){
+        this.user_name = user_name;
+        this.user_surname = user_surname;
+        this.user_path = user_path;
+    }
     
 
     public int getUser_id() {

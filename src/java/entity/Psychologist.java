@@ -42,6 +42,11 @@ public class Psychologist {
         this.psych_avg = psych_avg;
         this.psych_description = psych_description;
     }
+    public Psychologist(String psych_name,String psych_surname,String psych_path){
+        this.psych_name = psych_name;
+        this.psych_surname = psych_surname;
+        this.psych_path = psych_path;
+    }
 
     public int getPsych_id() {
         return psych_id;

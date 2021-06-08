@@ -58,7 +58,7 @@ and open the template in the editor.
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "loginPage" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
                                           action="#{userBean.cikisYap()}"></h:commandButton>
@@ -83,7 +83,7 @@ and open the template in the editor.
                         </h:inputTextarea>
                         <h:inputText  rendered="#{userBean.loggedIn}" id="char-counter" style="width: 50px" disabled="true" value="#{yorumBean.char_counter}"/>
                         <h:commandButton rendered="#{!(userBean.loggedIn)}" value="Giriş Yap | Üye Ol" class="btn btn-success" style="margin-top: 10px;float: right"
-                                         action="deneme"/>
+                                         action="loginPage"/>
                         <h:commandButton rendered="#{userBean.loggedIn}" value="Gönder !" 
                                          class="btn btn-success" style="margin-top: 10px;float: right"
                                          action="#{yorumBean.actionGonder()}">
@@ -115,7 +115,7 @@ and open the template in the editor.
 
                             <ul class="list-inline d-sm-flex my-0" style="float:right">
                                 <h:form prependId="false" id="likeButton">
-                                    <h:commandLink rendered="#{!(userBean.loggedIn) }" action="deneme"> 
+                                    <h:commandLink rendered="#{!(userBean.loggedIn) }" action="loginPage"> 
                                         <h:graphicImage library="images" name="icons/love.png"/> 
                                     </h:commandLink>
 

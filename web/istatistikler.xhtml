@@ -20,7 +20,7 @@
         </script> <!-- script for DateTime. -->
     </h:head>
     <h:body>
-               <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="" >
             <div class="container-fluid" >
                 <i class="fas fa-child" style="padding: 5px"></i>
                 <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
@@ -56,7 +56,7 @@
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "loginPage" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
                                           action="#{userBean.cikisYap()}"></h:commandButton>
@@ -66,267 +66,273 @@
             </div>
         </nav>
 
-<div class="card-holder">
-  <div class="card32 bg-news">
-<div class="container-fluid hersey" style="">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 sol" style="">
-                    <div class="bestmember" style="display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 50px;">
-                        <h3>En Az Eğitmen Değiştiren Üyemiz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
+        <div class="card-holder">
+            <div class="card32 bg-news">
+                <div class="container-fluid hersey" style="">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 sol" style="">
+                            <div class="bestmember" style="display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 50px;">
+                                <h3>Sizlerin seçimleri ile en çok seçilen Antrenörümüz</h3>
+                                <ui:repeat value="#{istatistikBean.ptEnFazlaSecilen}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="#{list.pt_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="#{list.pt_path}" class="profile"/>
+                                            <div class="card-content">
+                                                <h3>#{list.pt_name.toUpperCase()}#{list.pt_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
                             </div>
+
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+
+
+                            <div class="bestpt" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                <h3>Sizlerin seçimleri ile en çok seçilen Diyetisyenimiz</h3>
+                                <ui:repeat value="#{istatistikBean.nutEnFazlaSecilen}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="#{list.nut_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="#{list.nut_path}" class="profile"/>
+                                            <div class="card-content">
+                                                <h3>#{list.nut_name.toUpperCase()} #{list.nut_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+
+                            <div class="bestnut" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                <h3>Sizlerin seçimleri ile en çok seçilen Psikoloğumuz</h3>
+                                <ui:repeat value="#{istatistikBean.psychEnFazlaSecilen}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="#{list.psych_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="#{list.psych_path}" class="profile"/>
+                                            <div class="card-content">
+                                                <h3>#{list.psych_name.toUpperCase()} #{list.psych_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+                            <div class="bestpsiko" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                <h3>Hiç tercih edilmeyen Psikoloğumuz</h3>
+                                <ui:repeat value="#{istatistikBean.psychEnAzSecilen}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="#{list.psych_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="#{list.psych_path}" class="profile"/>
+                                            <div class="card-content">
+                                                <h3>#{list.psych_name.toUpperCase()} #{list.psych_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+                            <div class="bestpsiko" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                <h3>Hiç tercih edilmeyen Diyetisyenimiz</h3>
+                                <ui:repeat value="#{istatistikBean.nutEnAzSecilen}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="#{list.nut_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="#{list.nut_path}" class="profile"/>
+                                            <div class="card-content">
+                                                <h3>#{list.nut_name.toUpperCase()} #{list.nut_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+                            <div class="bestpsiko" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                <h3>Hiç tercih edilmeyen Spor Hocamız</h3>
+                                <ui:repeat value="#{istatistikBean.ptEnAzSecilen}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="#{list.pt_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="#{list.pt_path}" class="profile"/>
+                                            <div class="card-content">
+                                                <h3>#{list.pt_name.toUpperCase()} #{list.pt_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+                            <div class="bestcomment" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                <h3>En Çok Beğeni Alan Yorumumuz</h3>
+                                <ui:repeat value="#{istatistikBean.yorumEnFazlaLikeAlan}" var="list">
+                                    <article class="comment">
+                                        <a class="comment-img" href="#non">
+                                            <h:graphicImage library="images" name="USERS/#{list.user_path}" alt="" width="50" height="50"/>
+                                        </a>
+                                        <div class="comment-body">
+                                            <div class="text">
+                                                <p style="">#{list.user_name.toUpperCase()} #{list.user_surname.toUpperCase()}</p>
+                                                <p style="">#{list.yorum_content}
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </article>
+                                </ui:repeat>
+                            </div>
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <div class="col-sm-12 col-md-12 sag" style="">
+                            <div class="bestmember" style="display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 50px;">
+                                <h3>Yorumları En Fazla Beğenilen Kullanıcı</h3>
+                                <ui:repeat value="#{istatistikBean.yorumlarıEnFazlaLikeAlanUser}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="USERS/#{list.user_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="USERS/#{list.user_path}" class="profile"/> 
+
+
+                                            <div class="card-content">
+                                                <h3>#{list.user_name.toUpperCase()} #{list.user_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+
+                            <div class="box">
+                                <div class="box-sm red"></div>
+                                <div class="box-sm orange"></div>
+                                <div class="box-sm yellow "></div>
+                                <div class="box-sm green "></div>
+                                <div class="box-sm blue "></div>
+                                <div class="box-sm purple"></div>
+                            </div>
+
+
+
+                            <div class="bestpt" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                <h3>En Sadık Kullanıcımız</h3>
+                                <ui:repeat value="#{istatistikBean.enSadikUser}" var="list">
+                                    <div class="col-md-4" >
+                                        <div class="card profile-card-1" >
+                                            <h:graphicImage library="images" name="USERS/#{list.user_path}" class="background"/> 
+                                            <h:graphicImage library="images" name="USERS/#{list.user_path}" class="profile"/> 
+
+
+                                            <div class="card-content">
+                                                <h3>#{list.user_name.toUpperCase()} #{list.user_surname.toUpperCase()}</h3>
+                                                <div class="icon-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
-
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-
-
-                    <div class="bestpt" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>Sizlerin seçimleri ile en çok seçilen Antrenörümüz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-
-                    <div class="bestnut" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>Sizlerin seçimleri ile en çok seçilen Diyetisyenimiz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-                    <div class="bestpsiko" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>Sizlerin seçimleri ile en çok seçilen Psikoloğumuz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-                    <div class="bestcomment" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>En çok beğeni alan yorumumuz</h3>
-                        <article class="comment">
-                            <a class="comment-img" href="#non">
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="" width="50" height="50"/>
-                            </a>
-                            <div class="comment-body">
-                                <div class="text">
-                                    <p style="">This is a much longer one that will go on for a few lines.</p>
-                                    <p style="">It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
-                                </div>
-
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-
-                </div>
-
-
-
-
-
-                <div class="col-sm-12 col-md-12 sag" style="">
-                    <div class="bestmember" style="display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 50px;">
-                        <h3>En Çok Eğitmen Değiştiren Üyemiz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-
-
-                    <div class="bestpt" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>Sizlerin seçimleri ile en az seçilen Antrenörümüz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-
-                    <div class="bestnut" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>Sizlerin seçimleri ile en az seçilen Diyetisyenimiz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-                    <div class="bestpsiko" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>Sizlerin seçimleri ile en az seçilen Psikoloğumuz</h3>
-                        <div class="col-md-4" >
-                            <div class="card profile-card-1" >
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="profile-sample1" class="background"/>
-                                <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
-                                <div class="card-content">
-                                    <h3>Savannah Fields</h3>
-                                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="box">
-                        <div class="box-sm red"></div>
-                        <div class="box-sm orange"></div>
-                        <div class="box-sm yellow "></div>
-                        <div class="box-sm green "></div>
-                        <div class="box-sm blue "></div>
-                        <div class="box-sm purple"></div>
-                    </div>
-
-                    <div class="bestcomment" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-                        <h3>En az beğeni alan yorumumuz</h3>
-                        <article class="comment">
-                            <a class="comment-img" href="#non">
-                                <img src="https://dbq8hrmshvuto.cloudfront.net/assets2/096/662/599/680/normal/avatar.jpg" alt="" width="50" height="50"/>
-                            </a>
-                            <div class="comment-body">
-                                <div class="text">
-                                    <p>This is a much longer one that will go on for a few lines.</p>
-                                    <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
-                                </div>
-
-                            </div>
-                        </article>
-                    </div>
-
-
 
                 </div>
             </div>
-
         </div>
-  </div>
-</div>
-        
+
 
 
 

@@ -24,6 +24,15 @@ public class PersonalTrainer {
     private double pt_avg ; 
     private int pt_master ;
     private String description ; 
+    private int counter ; 
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
     
     public PersonalTrainer(){
         
@@ -46,6 +55,12 @@ public class PersonalTrainer {
         this.pt_master = pt_master;
         this.description = description ; 
         
+    }
+    public PersonalTrainer(String pt_name,String pt_surname, String pt_path,int counter){
+        this.pt_name = pt_name ; 
+        this.pt_surname = pt_surname;
+        this.pt_path = pt_path;
+        this.counter = counter  ;
     }
 
     public String getDescription() {

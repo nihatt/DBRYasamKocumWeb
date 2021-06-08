@@ -43,6 +43,12 @@ public class Nutritionist {
         this.nut_avg = nut_avg;
         this.nut_description = nut_description;
     }
+    public Nutritionist(String nut_name, String nut_surname, String nut_path){
+        this.nut_name = nut_name;
+        this.nut_surname = nut_surname;
+        this.nut_path = nut_path;
+        
+    }
     
     
     public int getNut_id() {

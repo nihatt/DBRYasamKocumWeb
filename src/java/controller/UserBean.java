@@ -405,10 +405,15 @@ public class UserBean {
 
     // for Sign-up
     public String actionSignUp() {
-//        if((new UserDAO().checkMailDuplicate(user_mail))){
-//            
-//             return "index" ; 
-//        }
+        if((new UserDAO().checkMailDuplicate(user_mail))){
+             üyeYanlis = true;
+            girisYanlis = false;
+            sifreOldu = false ; 
+            sifreOlmadi = false ; 
+            üyeOldu = false ; 
+            return null;
+             
+        }
         if (user_name == null || user_surname == null || user_mail == null || user_password == null || doc == null || user_date == null) {
             üyeYanlis = true;
             girisYanlis = false;

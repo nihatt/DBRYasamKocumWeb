@@ -102,12 +102,15 @@ public class UserDAO {
         return 0;
     }
     public void düzenleYorum(String yeniYorum,int yorum_id){
-        String query = "UPDATE YORUMLAR SET YORUM_CONTENT = ' "+ yeniYorum+" ' WHERE YORUM_ID = "+yorum_id ; 
+        // String query = "UPDATE YORUMLAR SET YORUM_CONTENT = ' "+ yeniYorum+" ' WHERE YORUM_ID = "+yorum_id ; 
+        String query="UPDATE YORUMLAR SET YORUM_CONTENT = ? WHERE YORUM_ID = ?" ; 
         try{
             dbConnection = new DBConnection();
             connection = dbConnection.createConnection();
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,yeniYorum);
+            preparedStatement.setInt(2, yorum_id);
+            preparedStatement.executeUpdate();
         }catch(Exception e1){
             
         }
@@ -246,11 +249,15 @@ public class UserDAO {
     public boolean checkMailDuplicate(String user_mail) {
         try {
             int counter = 0;
-            String query = "select * from USERS where USER_MAIL = '  " + user_mail + "  ' ";
+            //String query = "select * from USERS where USER_MAIL = '  " + user_mail + "  ' ";
+            String query = "SELECT * FROM USERS WHERE USER_MAIL = ?" ; 
+            
             dbConnection = new DBConnection();
             connection = dbConnection.createConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            preparedStatement = connection.prepareCall(query);
+            preparedStatement.setString(1, user_mail);
+            resultSet=preparedStatement.executeQuery();
+            
             while (resultSet.next()) {
                 counter++;
             }

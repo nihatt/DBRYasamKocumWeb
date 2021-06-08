@@ -7,6 +7,11 @@ body{
     width: 100%
 }
 
+
+.yorumlar-start{
+    display:flex;flex-direction: column;justify-content: center;align-items: center;width: 63vw;background-color: rgb(238, 238, 238,0.8);margin:auto;padding-top: 60px;
+}
+
 /*
     Image credits:
     uifaces.com (http://uifaces.com/authorized)
@@ -37,6 +42,37 @@ body{
     }
 }
 
+@media screen and (max-width: 768px) {
+ body{
+     background: red;
+     background-color: red;
+    }
+    .yorumlar-start{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: auto !important;
+    }
+
+    .yorum{
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .media{
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+}
+
+
+
+
+
 .g-bg-secondary {
     background-color: #fafafa !important;
 }
@@ -60,3 +96,4 @@ body{
 .media-body{
     border-radius: 30px;
 }
+

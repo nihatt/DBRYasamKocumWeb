@@ -5,15 +5,18 @@
             <url>web/sporhocalari.xhtml</url>
             <bookmark id="1">
                 <name/>
-                <line>69</line>
+                <line>72</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/kendinitani.xhtml</file>
-            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/kendinitanicss.css</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/yorumlarnewcss.css</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/yorumlar.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/deneme.css</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/deneme.xhtml</file>
+            <file>file:/C:/Users/niyobaskan/Desktop/dbrsyasamkoc/web/index.xhtml</file>
         </group>
     </open-files>
 </project-private>

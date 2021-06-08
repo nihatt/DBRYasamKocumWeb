@@ -1,11 +1,51 @@
-@media (max-width:768px){
+
+body{
+    background-color: rgb(102, 204, 255,0.4);
+
+}
+
+
+.container{
+    background: rgba(50,55,44,0.6)  url('https://image.freepik.com/free-photo/top-view-citrus-fruits-as-orange-lemon-tangerine-kumquats-left-side-blue-background-with-copy-space_141793-9600.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay; 
+}
+
+.niop{
+    background-color: rgb(66, 131, 131,0.8);
+    padding: 25px;
+    border-radius: 30px;
+}
+
+
+.elemanlar{
+    font-family: 'KoHo', cursive;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+
+
+
+
+
+
+@media screen and (max-width:768px){
+
     .body{
-        width: 100vh;
+      
         padding: 0 !important;
         margin: 0  !important
     }
+    .container{
+        background: wheat;
+    }
+    
     .ilkanket{
         width: 100%;
+        background: wheat;
     }
     .secim1{
         width: 100%;
@@ -25,19 +65,32 @@
     .paneldegis{
         margin-left: 0 !important;
         margin-right: 0 !important;
+        padding-left:95px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .buttondegis{
-        margin-left : 30% !important;
+        margin-left : 40% !important;
     }
     .resimdegis{
         margin-left: 0 !important;
 
     }
+    .ikincianket{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
+    #text{color:black;}
     .ilkanket , .ikincianket , .ucuncuanket{
+        margin-bottom: 150px;
         margin: 0 !important;
         padding: 0 !important;
+        background: wheat;
+       
     }
 
     .ilbox,ikincibox,.ucuncubox{

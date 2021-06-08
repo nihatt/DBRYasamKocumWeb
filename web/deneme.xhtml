@@ -20,7 +20,7 @@
         </script> <!-- script for DateTime. -->
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="" >
+                <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="" >
             <div class="container-fluid" >
                 <i class="fas fa-child" style="padding: 5px"></i>
                 <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
@@ -48,12 +48,15 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/kendinitani.xhtml" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/istatistikler.xhtml" tabindex="-1" aria-disabled="true">İstatistiklerimiz</a>
                         </li>
                     </ul>
                     <h:form class="d-flex">
 
-                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="margin-left: 5px"></h:commandButton>
+                        <h:commandButton action = "deneme" rendered="#{!(userBean.loggedIn)}" class="btn btn-outline-success"   value="Giriş Yap | Üye Ol"  style="padding-left: 0px;padding-right: 0px;"></h:commandButton>
                         <h:commandButton action = "profilepage?faces-redirect=true"  rendered="#{userBean.loggedIn}"  value="Profil" class="btn btn-warning" style="margin-left: 5px"></h:commandButton>
                         <h:commandButton  rendered="#{userBean.loggedIn}" class="btn btn-danger"   value="Çıkış Yap"  style="margin-left: 5px"
                                           action="#{userBean.cikisYap()}"></h:commandButton>

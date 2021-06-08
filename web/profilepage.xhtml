@@ -18,7 +18,7 @@
 
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="padding-bottom: 20px;padding-top: 20px" >
+                <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="" >
             <div class="container-fluid" >
                 <i class="fas fa-child" style="padding: 5px"></i>
                 <a class="navbar-brand" href="/dbrsyasamkoc/faces/index.xhtml">DBR Yaşam Koçluğu</a>
@@ -41,11 +41,15 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/sporhocalari.xhtml">Kişisel Antrenörler</a></li>
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/psikologlar.xhtml">Psikologlar</a></li>
+
                                 <li><a class="dropdown-item" href="/dbrsyasamkoc/faces/yasamkoclari.xhtml">Diyetisyenler</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/kendinitani.xhtml" tabindex="-1" aria-disabled="true">Kendini Gör !</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dbrsyasamkoc/faces/istatistikler.xhtml" tabindex="-1" aria-disabled="true">İstatistiklerimiz</a>
                         </li>
                     </ul>
                     <h:form class="d-flex">
@@ -397,7 +401,7 @@
                         <div class="modal-body">
                             <p>
                                 <h:inputTextarea value="#{userBean.tempYorum}"
-                                                 rows="3" style="height: 169px;min-width: 30vw;margin-top: 15px" 
+                                                 rows="3" style="height: 169px;min-width: 25vw;margin-top: 15px" 
                                                  p:maxlength="400" >
                                    
                                 </h:inputTextarea>

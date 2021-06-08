@@ -3,6 +3,7 @@ body {
   height: 100vh;
   background-image: url('https://c1.wallpaperflare.com/preview/790/198/550/table-wood-fresh-organic.jpg');
   background-size: cover;
+  background-repeat: repeat;
   background-position: center;
   display: flex;
   
@@ -25,6 +26,10 @@ body {
   margin-bottom: 50px;
   z-index: 1;
   position: relative;
+}
+.ibo{
+    display: flex !important;
+    flex-direction: row !important;
 }
 
 .our-team .picture::before {
@@ -111,8 +116,16 @@ body {
   background-color: #f7f5ec;
 }
 
-@media screen and (max-width: 769px){
+@media screen and (max-width: 768px){
     .kucult{
-        margin-top: 1200px !important ;
+        padding-top:800px !important;        
+    }
+    body{
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        
+    }
+    .ibo{
+        display: initial;
     }
 }

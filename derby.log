@@ -1,7 +1,7 @@
-Tue Jun 08 01:16:49 EET 2021 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Tue Jun 08 10:59:59 EET 2021 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Tue Jun 08 01:16:49 EET 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0179-e88c-c2ac-00000be5f995 
+Tue Jun 08 10:59:59 EET 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0179-eaa2-a9b1-00000be5f995 
 on database directory C:\Users\niyobaskan\Desktop\dbrsyasamkoc\DBRdb with class loader sun.misc.Launcher$AppClassLoader@49476842 
 Loaded from file:/C:/glassfish4/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -13,8 +13,8 @@ os.version=10.0
 derby.system.home=C:\Users\niyobaskan\Desktop\dbrsyasamkoc
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Tue Jun 08 07:36:40 EET 2021: Shutting down Derby engine
+Tue Jun 08 11:23:58 EET 2021: Shutting down Derby engine
 ----------------------------------------------------------------
-Tue Jun 08 07:36:40 EET 2021:
-Shutting down instance a816c00e-0179-e88c-c2ac-00000be5f995 on database directory C:\Users\niyobaskan\Desktop\dbrsyasamkoc\DBRdb with class loader sun.misc.Launcher$AppClassLoader@49476842 
+Tue Jun 08 11:23:58 EET 2021:
+Shutting down instance a816c00e-0179-eaa2-a9b1-00000be5f995 on database directory C:\Users\niyobaskan\Desktop\dbrsyasamkoc\DBRdb with class loader sun.misc.Launcher$AppClassLoader@49476842 
 ----------------------------------------------------------------

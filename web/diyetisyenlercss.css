@@ -115,7 +115,9 @@ body {
   color: #1369ce;
   background-color: #f7f5ec;
 }
-
+.kucult{
+    margin-top: 200px !important;
+}
 @media screen and (max-width: 768px){
     .kucult{
         margin-top:1000px !important;        

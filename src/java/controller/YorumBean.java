@@ -16,6 +16,11 @@ public class YorumBean {
     private ArrayList<Yorum> yorumArrayList  = null ; 
     private YorumDAO yorumDAO = null ; 
     
+    public YorumBean(){
+        PersonalTrainerBean.setReset(true);
+        UserBean.resetBooleanMessages();
+    }
+    
     private String typeComment ; 
 
     public String getTypeComment() {

@@ -43,7 +43,12 @@ public class UserBean {
     private int char_counter ; 
     private  static Yorum staticYorum ; 
     public String tempYorum ; 
-
+    
+    public UserBean(){
+        PersonalTrainerBean.setReset(true);
+        UserBean.resetBooleanMessages();
+    }
+    
     public String ayarlaStaticYorum(Yorum tempYorum){
         staticYorum = tempYorum ; 
         return null ; 

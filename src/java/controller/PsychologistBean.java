@@ -31,6 +31,11 @@ public class PsychologistBean {
         return sPsychologist.getPsych_id();
     }
 
+    public PsychologistBean() {
+        PersonalTrainerBean.setReset(true);
+        UserBean.resetBooleanMessages();
+    }
+
     
     public String firstSelecPsychologist(Psychologist psychologist){
        sPsychologist = psychologist ; 

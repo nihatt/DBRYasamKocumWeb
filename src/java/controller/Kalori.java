@@ -38,6 +38,11 @@ public class Kalori {
     private boolean secenekA, secenekB, secenekC, secenekD, secenekE;
     private boolean kariyerOnay = false;
     private String kariyerMesaj;
+    
+    public Kalori(){
+        PersonalTrainerBean.setReset(true);
+        UserBean.resetBooleanMessages();
+    }
 
     public String getYas() {
         return yas;

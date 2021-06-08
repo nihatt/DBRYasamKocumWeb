@@ -28,7 +28,11 @@ public class IstatistikBean {
     private ArrayList<IstatistikYorum> yorumEnFazlaLikeAlan = null ; 
     private ArrayList<User> yorumlarıEnFazlaLikeAlanUser = null  ; 
     private ArrayList<User> enSadikUser = null ; 
-
+    
+    public IstatistikBean(){
+        PersonalTrainerBean.setReset(true);
+        UserBean.resetBooleanMessages();
+    }
 
 
     public ArrayList<PersonalTrainer> getPtEnFazlaSecilen() {

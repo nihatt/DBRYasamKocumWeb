@@ -22,10 +22,17 @@ public class NutritionistBean {
     //------------------------------------------
     private static Nutritionist sNutritionist ; 
     
+    
+    public NutritionistBean(){
+        PersonalTrainerBean.setReset(true);
+        UserBean.resetBooleanMessages();
+    }
+    
     public String firstSelectNutritionist(Nutritionist nutritionist){
         sNutritionist = nutritionist ; 
         return null ; 
     }
+    
     
     public String getTitleOfNutritionist(){
         if(sNutritionist == null){
